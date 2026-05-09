@@ -383,21 +383,10 @@
 //   );
 // }
 
-
-
-
-
-
 "use client";
 
 import { useState } from "react";
-import {
-  Mail,
-  Lock,
-  User,
-  Camera,
-  PhoneCallIcon,
-} from "lucide-react";
+import { Mail, Lock, User, Camera, PhoneCallIcon } from "lucide-react";
 import Link from "next/link";
 import { registerUser } from "@/services/auth.api";
 import { toast } from "sonner";
@@ -414,6 +403,8 @@ export default function SignUp() {
     mobileNumber: "",
     gender: "",
   });
+
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const router = useRouter();
   const [file, setFile] = useState<File | null>(null);
@@ -436,6 +427,11 @@ export default function SignUp() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!acceptedTerms) {
+      toast.error("Please accept the Terms and Conditions to continue");
+      return;
+    }
 
     // Basic Validation
     if (formData.password !== formData.confirmPassword) {
@@ -564,6 +560,36 @@ export default function SignUp() {
               placeholder="Mobile (optional)"
               onChange={handleChange}
             />
+
+            <div className="flex items-start gap-2 px-1 py-2">
+              <input
+                type="checkbox"
+                id="terms"
+                checked={acceptedTerms}
+                onChange={(e) => setAcceptedTerms(e.target.checked)}
+                className="mt-1 w-4 h-4 accent-green-600 cursor-pointer"
+              />
+              <label
+                htmlFor="terms"
+                className="text-sm text-gray-600 cursor-pointer"
+              >
+                I agree to the{" "}
+                <Link
+                  href="/terms"
+                  className="text-green-600 hover:underline font-medium"
+                >
+                  Terms & Conditions
+                </Link>{" "}
+                and{" "}
+                <Link
+                  href="/privacy"
+                  className="text-green-600 hover:underline font-medium"
+                >
+                  Privacy Policy
+                </Link>
+                .
+              </label>
+            </div>
 
             <button
               type="submit"

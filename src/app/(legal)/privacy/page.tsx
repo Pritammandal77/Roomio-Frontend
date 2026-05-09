@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 export default function PrivacyPolicy() {
-  const lastUpdated = "April 30, 2026"; //[cite: 1]
+  const lastUpdated = "April 30, 2026";
 
   const sections = [
     {
@@ -21,27 +21,24 @@ export default function PrivacyPolicy() {
       content: (
         <div className="space-y-2">
           <p>
-            Roomioo collects several types of information from and about
-            users[cite: 1]:
+            Roomioo collects several types of information from and about users:
           </p>
           <ul className="list-disc ml-6 space-y-2">
             <li>
               <strong>Personal Identifiers:</strong> Your name, email address,
-              phone number, and profile photographs[cite: 1].
+              phone number, and profile photographs.
             </li>
             <li>
               <strong>Lifestyle Attributes:</strong> Data regarding habits like
-              smoking, cleanliness, guests, work schedule, and pet
-              ownership[cite: 1, 3].
+              smoking, cleanliness, guests, work schedule, and pet ownership.
             </li>
             <li>
               <strong>Location Information:</strong> Current city data to
-              facilitate local matching[cite: 1, 3].
+              facilitate local matching.
             </li>
             <li>
               <strong>Usage Data:</strong> Information on how you interact with
-              the website, including profile matching & search preferences[cite:
-              1].
+              the website, including profile matching & search preferences.
             </li>
           </ul>
         </div>
@@ -52,17 +49,15 @@ export default function PrivacyPolicy() {
       icon: <Eye className="w-5 h-5 text-green-600" />,
       content: (
         <div className="space-y-2">
-          <p>We use the collected information to[cite: 1]:</p>
+          <p>We use the collected information to:</p>
           <ul className="list-disc ml-6 space-y-2">
-            <li>Create and maintain your user profile[cite: 1].</li>
+            <li>Create and maintain your user profile.</li>
             <li>
-              Utilize our matching algorithm to suggest compatible
-              roommates[cite: 1, 3].
+              Utilize our matching algorithm to suggest compatible roommates.
             </li>
-            <li>Enable secure communication between users[cite: 1].</li>
+            <li>Enable secure communication between users.</li>
             <li>
-              Monitor and improve the safety and security of the platform[cite:
-              1].
+              Monitor and improve the safety and security of the platform.
             </li>
           </ul>
         </div>
@@ -75,21 +70,20 @@ export default function PrivacyPolicy() {
         <div className="space-y-2">
           <p>
             Your privacy is our priority, and we share information only in the
-            following ways[cite: 1]:
+            following ways:
           </p>
           <ul className="list-disc ml-6 space-y-2">
             <li>
               <strong>User Profiles:</strong> Your first name, lifestyle habits,
-              and general location are visible to registered users[cite: 1].
+              and general location are visible to registered users.
             </li>
             <li>
               <strong>Contact Privacy:</strong> Contact details remain private
-              until you explicitly choose to reveal them or grant
-              permission[cite: 1, 3].
+              until you explicitly choose to reveal them or grant permission.
             </li>
             <li>
               <strong>Legal Compliance:</strong> Disclosure may occur if
-              required by Indian law or public authorities[cite: 1].
+              required by Indian law or public authorities.
             </li>
           </ul>
         </div>
@@ -101,9 +95,9 @@ export default function PrivacyPolicy() {
       content: (
         <p>
           We implement technical measures and encrypted databases designed to
-          secure your personal information from unauthorized access[cite: 1, 3].
-          However, please be aware that no system is impenetrable, and users
-          provide information at their own risk[cite: 1].
+          secure your personal information from unauthorized access. However,
+          please be aware that no system is impenetrable, and users provide
+          information at their own risk.
         </p>
       ),
     },
@@ -113,9 +107,8 @@ export default function PrivacyPolicy() {
       content: (
         <p>
           You have the right to access, edit, or delete your account information
-          at any time through your profile settings[cite: 1]. To permanently
-          delete your data from our servers, you may contact our support
-          team[cite: 1].
+          at any time through your profile settings. To permanently delete your
+          data from our servers, you may contact our support team.
         </p>
       ),
     },
@@ -137,13 +130,13 @@ export default function PrivacyPolicy() {
               Privacy Policy
             </h1>
             <p className="text-gray-500 italic">
-              Last Updated: {lastUpdated}[cite: 1]
+              Last Updated: {lastUpdated}
             </p>
             <p className="mt-4 text-gray-600 leading-relaxed">
               Welcome to <strong>Roomioo</strong>. We value your privacy and are
               committed to protecting your personal data collected through our
               platform, which connects individuals seeking roommates based on
-              lifestyle preferences[cite: 1, 3].
+              lifestyle preferences.
             </p>
           </header>
 
@@ -170,7 +163,6 @@ export default function PrivacyPolicy() {
               Contact & Support
             </h3>
             <div className="bg-green-50 rounded-2xl p-6 border border-green-100 relative overflow-hidden group">
-              {/* Subtle decorative circle */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-green-100 rounded-full opacity-50 group-hover:scale-110 transition-transform duration-500" />
 
               <div className="relative z-10">
@@ -189,7 +181,6 @@ export default function PrivacyPolicy() {
                   </Link>
                 </div>
 
-                {/* Updated Location Badge */}
                 <div className="mt-8 pt-4 border-t border-green-100/50 flex flex-wrap items-center gap-y-2 gap-x-4 text-[10px] sm:text-xs font-bold text-green-700 uppercase tracking-widest">
                   <div className="flex items-center gap-2">
                     <span className="relative flex h-2 w-2">
