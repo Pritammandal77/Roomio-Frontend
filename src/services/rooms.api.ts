@@ -30,8 +30,12 @@ export const fetchListedCities = async () => {
     return res.data;
 }
 
-
 export const fetchCurrUserListings = async() => {
     const res = await axiosInstance.get("/api/rooms/listings/me")
+    return res.data
+}
+
+export const deleteListing = async(id: string) => {
+    const res = await axiosInstance.delete(`api/rooms/listing/delete/${id}`)
     return res.data
 }

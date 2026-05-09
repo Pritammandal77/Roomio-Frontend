@@ -271,7 +271,7 @@ function InterestsCard({ item, type }: any) {
         style={{ boxShadow: "0 4px 24px -4px rgba(16, 122, 76, 0.08)" }}
       >
         {/* Subtle top accent line */}
-        <div className="h-[3px] w-full bg-gradient-to-r from-emerald-400 via-green-500 to-teal-400" />
+        <div className="h-0.75 w-full bg-linear-to-r from-emerald-400 via-green-500 to-teal-400" />
 
         <div className="p-6 flex flex-col gap-5">
           {/* HEADER: Avatar + Name + Status */}
@@ -303,10 +303,10 @@ function InterestsCard({ item, type }: any) {
           </div>
 
           {/* DIVIDER */}
-          <div className="h-px bg-gradient-to-r from-transparent via-green-100 to-transparent" />
+          <div className="h-px bg-linear-to-r from-transparent via-green-100 to-transparent" />
 
           {/* PROPERTY BLOCK */}
-          <div className="rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50/60 border border-green-100 p-4">
+          <div className="rounded-2xl bg-linear-to-br from-green-50 to-emerald-50/60 border border-green-100 p-4">
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1 min-w-0">
                 <p>
