@@ -1,12 +1,13 @@
 "use client";
 import ChatList from "@/components/chat/ChatList";
+import ProtectedRoute from "@/components/middleware/ProtectedRoute";
 import { useAppSelector } from "@/lib/rtk/hooks";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function ChatsLayout({ children }: any) {
   const pathname = usePathname();
   const isChatOpen = pathname !== "/chats";
-  
+
   return (
     <div className="flex h-screen overflow-hidden">
       {/* SIDEBAR */}
@@ -26,7 +27,7 @@ export default function ChatsLayout({ children }: any) {
           ${!isChatOpen ? "hidden xl:flex" : "flex"}
         `}
       >
-        {children}
+        <ProtectedRoute>{children}</ProtectedRoute>
       </div>
     </div>
   );
