@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
-import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
 import Navbar from "@/components/shared/Navbar";
+import ProtectedRoute from "@/components/middleware/ProtectedRoute";
 
 export default async function ProtectedLayout({
   children,
@@ -11,7 +10,7 @@ export default async function ProtectedLayout({
   return (
     <div>
       <Navbar />
-      {children}
+      <ProtectedRoute>{children}</ProtectedRoute>
     </div>
   );
 }

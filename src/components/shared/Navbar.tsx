@@ -140,15 +140,17 @@ export default function Navbar() {
                 Profile
               </Link>
             )}
-
-            <Link
-              href="/listing/new"
-              className="block text-gray-600"
-              onClick={() => setIsOpen(false)}
-            >
-              List Property
-            </Link>
             
+            {user && (
+              <Link
+                href="/listing/new"
+                className="block text-gray-600"
+                onClick={() => setIsOpen(false)}
+              >
+                List Property
+              </Link>
+            )}
+
             {user && (
               <Link
                 href="/chats"
