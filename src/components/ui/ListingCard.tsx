@@ -98,7 +98,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { deleteListing } from "@/services/rooms.api";
@@ -110,7 +110,7 @@ export default function ListingCard({ listing, id, index, onDelete }: any) {
   const [showMenu, setShowMenu] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const pathname = usePathname();
-
+  const router = useRouter();
   const isDashboard = pathname === "/dashboard";
   dayjs.extend(relativeTime);
 
@@ -121,6 +121,7 @@ export default function ListingCard({ listing, id, index, onDelete }: any) {
       console.log("Deleting listing:", res);
       toast.success("Listing deleted successfully")
       setShowDeleteModal(false);
+      router.push("/")
       if (onDelete) onDelete(id);
     }catch{
       toast.error("Something went wrong, while deleting")
@@ -216,7 +217,7 @@ export default function ListingCard({ listing, id, index, onDelete }: any) {
       {/* DELETE CONFIRMATION MODAL */}
       <AnimatePresence>
         {showDeleteModal && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-100 flex items-center justify-center p-4">
             {/* Blurred Background Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
