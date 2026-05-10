@@ -7,6 +7,7 @@ import { logInUser } from "@/services/auth.api";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import Input from "@/components/ui/InputField";
+import GoogleLoginButton from "@/components/ui/GoogleLoginButton";
 
 export default function SignUp() {
   const router = useRouter();
@@ -83,21 +84,18 @@ export default function SignUp() {
             </button>
           </form>
 
-          {/* Divider */}
-          <div className="flex items-center gap-3 my-6">
-            <div className="flex-1 h-px bg-gray-200"></div>
-            <span className="text-gray-400 text-sm">OR</span>
-            <div className="flex-1 h-px bg-gray-200"></div>
+    
+
+          <div className="flex items-center my-6">
+            <div className="flex-1 h-px bg-gray-200" />
+            <span className="px-3 text-sm text-gray-400">OR</span>
+            <div className="flex-1 h-px bg-gray-200" />
           </div>
 
           {/* Google */}
-          <button className="w-full py-3 rounded-lg border border-gray-400 cursor-pointer shadow-md flex items-center justify-center gap-2 hover:bg-gray-50 transition">
-            <img
-              src="https://www.svgrepo.com/show/475656/google-color.svg"
-              className="w-5 h-5"
-            />
-            Continue with Google
-          </button>
+          <div className="flex items-center justify-center w-full">
+            <GoogleLoginButton />
+          </div>
 
           <div className="flex items-center justify-center text-[14px] mt-4">
             <Link href="/signup" className="text-blue-500">

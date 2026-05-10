@@ -392,6 +392,7 @@ import { registerUser } from "@/services/auth.api";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import Input from "@/components/ui/InputField";
+import GoogleLoginButton from "@/components/ui/GoogleLoginButton";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -599,9 +600,21 @@ export default function SignUp() {
             </button>
           </form>
 
+
+          <div className="flex items-center my-6">
+            <div className="flex-1 h-px bg-gray-200" />
+            <span className="px-3 text-sm text-gray-400">OR</span>
+            <div className="flex-1 h-px bg-gray-200" />
+          </div>
+
+          <div className="flex items-center justify-center w-full mt-5">
+            <GoogleLoginButton />
+          </div>
+
+          
           <div className="text-center mt-4">
             <Link href="/signin" className="text-blue-500 hover:underline">
-              Already have an account?
+              Already have an account? Login
             </Link>
           </div>
         </div>
