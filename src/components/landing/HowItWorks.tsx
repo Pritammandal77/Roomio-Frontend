@@ -26,6 +26,14 @@ const steps = [
   },
 ];
 
+// Animation Variants for reusability and smoothness
+const fadeInUp = {
+  initial: { opacity: 0, y: 30, scale: 0.95 },
+  whileInView: { opacity: 1, y: 0, scale: 1 },
+  viewport: { once: false, amount: 0.2 }, // amount: 0.2 means it triggers when 20% of the element is visible
+  transition: { type: "spring", stiffness: 100, damping: 20 },
+};
+
 export default function HowItWorks() {
   const user = useAppSelector((state) => state.user.userData);
 
@@ -39,18 +47,36 @@ export default function HowItWorks() {
 
       <div className="max-w-7xl mx-auto text-center relative z-10">
         {/* Heading */}
+        {/* Heading */}
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-6xl font-bold text-gray-900"
+          initial={{ opacity: 0, y: 40}}
+          whileInView={{ opacity: 1, y: 0}}
+          viewport={{ once: false, margin: "-50px" }}
+          transition={{
+            type: "spring",
+            stiffness: 50,
+            damping: 20,
+            mass: 1,
+          }}
+          className="text-4xl md:text-6xl font-bold text-gray-900 tracking-tight"
         >
           How It <span className="text-green-600">Works</span>
         </motion.h2>
 
-        <p className="mt-5 text-gray-600 max-w-2xl mx-auto text-lg">
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-50px" }}
+          transition={{
+            duration: 0.8,
+            delay: 0.15,
+            ease: [0.21, 0.47, 0.32, 0.98], // Custom Bezier for a "gentle" float-in
+          }}
+          className="mt-5 text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed"
+        >
           Find your perfect housemate or list your space in a few simple steps.
-        </p>
+        </motion.p>
 
         {/* Steps */}
         <div className="mt-20 grid md:grid-cols-3 gap-10 relative">
@@ -63,17 +89,33 @@ export default function HowItWorks() {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+                initial="initial"
+                whileInView="whileInView"
+                viewport={{ once: false, amount: 0.3 }}
+                variants={{
+                  initial: { opacity: 0, y: 50 },
+                  whileInView: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      type: "spring",
+                      stiffness: 80,
+                      damping: 15,
+                      delay: index * 0.15, // Staggered effect
+                    },
+                  },
+                }}
                 className="relative group"
               >
                 {/* Glass Card */}
-                <div className="p-8 rounded-3xl bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2">
-                  {/* Icon */}
-                  <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-linear-to-br from-green-500 to-green-400 text-white shadow-md">
+                <div className="p-8 rounded-3xl bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
+                  {/* Icon with a subtle pulse animation on hover */}
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-linear-to-br from-green-500 to-green-400 text-white shadow-md"
+                  >
                     <Icon size={28} />
-                  </div>
+                  </motion.div>
 
                   {/* Step Number */}
                   <div className="absolute -top-4 -left-4 w-10 h-10 flex items-center justify-center rounded-full bg-green-600 text-white font-bold shadow-md">
@@ -97,15 +139,16 @@ export default function HowItWorks() {
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: false }}
+          transition={{ type: "spring", delay: 0.4 }}
           className="mt-16 transition flex justify-center"
         >
           {user ? (
             <div className="flex gap-4 flex-wrap">
               <Link href="/listings/all">
-                <button className="px-8 py-3 text-lg cursor-pointer rounded-2xl bg-green-600 text-white font-medium shadow-md hover:bg-green-700 transition">
+                <button className="px-8 py-3 text-lg cursor-pointer rounded-2xl bg-green-600 text-white font-medium shadow-md hover:bg-green-700 transition-colors">
                   Explore
                 </button>
               </Link>
@@ -113,7 +156,7 @@ export default function HowItWorks() {
           ) : (
             <Link
               href="/signup"
-              className="px-6 py-4 cursor-pointer rounded-xl bg-green-600 text-white hover:bg-green-700"
+              className="px-8 py-3 text-lg cursor-pointer rounded-xl bg-green-600 text-white hover:bg-green-700 transition-colors font-medium shadow-md"
             >
               Get Started
             </Link>
