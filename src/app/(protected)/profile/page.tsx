@@ -33,7 +33,9 @@ import {
 
 export default function Page() {
   const router = useRouter();
-  const [userPreference, setUserPreference] = useState<PreferenceData | null>(null);
+  const [userPreference, setUserPreference] = useState<PreferenceData | null>(
+    null,
+  );
   const [isPreferenceAdded, setIsPreferenceAdded] = useState(false);
   const user = useAppSelector((state: any) => state.user.userData);
 
@@ -49,7 +51,7 @@ export default function Page() {
     };
     fetchPreference();
   }, []);
-
+ 
   if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#f6fdf6]">
@@ -59,6 +61,8 @@ export default function Page() {
         </div>
       </div>
     );
+  } else {
+    console.log(user);
   }
 
   const formatDate = (date: string) =>
@@ -69,13 +73,15 @@ export default function Page() {
     });
 
   return (
-    <div className="min-h-screen bg-[#f4fbf4]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-
+    <div
+      className="min-h-screen bg-[#f4fbf4] pt-17"
+      style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+    >
       {/* ══════════════════════════════════
           COVER BANNER
       ══════════════════════════════════ */}
-      <div className="relative h-52 sm:h-64 lg:h-72 w-full overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-400 via-emerald-500 to-teal-500" />
+      <div className="relative h-40 sm:h-54 lg:h-52 w-full overflow-hidden">
+        <div className="absolute inset-0 bg-linear-to-br from-green-400 via-emerald-500 to-teal-500" />
         <div className="absolute -top-10 -left-10 w-60 h-60 rounded-full bg-white/10" />
         <div className="absolute top-8 left-1/3 w-32 h-32 rounded-full bg-white/10" />
         <div className="absolute -bottom-8 right-10 w-48 h-48 rounded-full bg-white/10" />
@@ -84,7 +90,7 @@ export default function Page() {
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)",
+              "linear-linear(rgba(255,255,255,0.4) 1px, transparent 1px), linear-linear(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)",
             backgroundSize: "32px 32px",
           }}
         />
@@ -96,7 +102,7 @@ export default function Page() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.4 }}
             onClick={() => router.push("/dashboard")}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white text-xs font-semibold border border-white/30 transition-all"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-sm text-black text-xs font-semibold border border-white/30 transition-all"
           >
             <LayoutDashboard size={13} />
             Dashboard
@@ -106,7 +112,7 @@ export default function Page() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.38, duration: 0.4 }}
             onClick={() => router.push("/profile/edit")}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white text-xs font-semibold border border-white/30 transition-all"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-sm text-black text-xs font-semibold border border-white/30 transition-all"
           >
             <Pencil size={12} />
             Edit Profile
@@ -119,7 +125,6 @@ export default function Page() {
       ══════════════════════════════════ */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative -mt-14 sm:-mt-16 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 pb-5 border-b border-green-100">
-
           {/* avatar + name */}
           <div className="flex items-end gap-4">
             <motion.div
@@ -170,45 +175,75 @@ export default function Page() {
           >
             <SlidersHorizontal size={15} />
             {isPreferenceAdded ? "Edit Preferences" : "Set Preferences"}
-            <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+            <ArrowRight
+              size={14}
+              className="group-hover:translate-x-0.5 transition-transform"
+            />
           </motion.button>
         </div>
 
         {/* ══════════════════════════════════
             BODY GRID
         ══════════════════════════════════ */}
-        <div className="mt-6 pb-20 grid lg:grid-cols-[260px_1fr] gap-6">
-
+        <div className="mt-6 pb-20 grid lg:grid-cols-[300px_1fr] gap-6">
           {/* LEFT: info sidebar */}
           <div className="space-y-4">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                delay: 0.1,
+                duration: 0.6,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
-              <InfoCard title="About" icon={<ShieldCheck size={15} className="text-green-600" />}>
-                <InfoRow icon={<Venus size={13} />} label="Gender" value={user.gender} />
-                <InfoRow icon={<CalendarDays size={13} />} label="Birthday" value={formatDate(user.dob)} />
+              <InfoCard
+                title="About"
+                icon={<ShieldCheck size={15} className="text-green-600" />}
+              >
+                {user.gender && (
+                  <InfoRow
+                    icon={<Venus size={13} />}
+                    label="Gender"
+                    value={user.gender}
+                  />
+                )}
+                {user.dob && (
+                  <InfoRow
+                    icon={<CalendarDays size={13} />}
+                    label="Birthday"
+                    value={formatDate(user.dob)}
+                  />
+                )}
+                {user.email && (
+                  <InfoRow
+                    icon={<Mail size={13} />}
+                    label="Email"
+                    value={user.email}
+                  />
+                )}
+                {
+                  user.mobileNumber &&
+                  <InfoRow
+                  icon={<Phone size={13} />}
+                  label="Mobile"
+                  value={user.mobileNumber}
+                />
+                }
               </InfoCard>
             </motion.div>
+
 
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.17, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                delay: 0.24,
+                duration: 0.6,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
-              <InfoCard title="Contact" icon={<Phone size={15} className="text-green-600" />}>
-                <InfoRow icon={<Mail size={13} />} label="Email" value={user.email} />
-                <InfoRow icon={<Phone size={13} />} label="Mobile" value={user.mobileNumber} />
-              </InfoCard>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.24, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 p-5 text-white shadow-lg">
+              <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-green-500 to-emerald-600 p-5 text-white shadow-lg">
                 <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-white/10" />
                 <div className="absolute bottom-2 left-2 w-12 h-12 rounded-full bg-white/10" />
                 <div className="relative">
@@ -217,7 +252,8 @@ export default function Page() {
                     <span className="text-sm font-bold">Roomio</span>
                   </div>
                   <p className="text-xs text-green-100 leading-relaxed">
-                    Your preferences power smarter roommate matches. Keep them updated for the best results.
+                    Your preferences power smarter roommate matches. Keep them
+                    updated for the best results.
                   </p>
                 </div>
               </div>
@@ -244,7 +280,6 @@ export default function Page() {
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-
                     <BigTile
                       delay={0.05}
                       icon={<Banknote size={28} />}
@@ -311,15 +346,21 @@ export default function Page() {
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                      className="col-span-2 md:col-span-1 relative overflow-hidden rounded-2xl border border-green-100 bg-gradient-to-br from-green-50 to-teal-50 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow"
+                      transition={{
+                        delay: 0.3,
+                        duration: 0.5,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                      className="col-span-2 md:col-span-1 relative overflow-hidden rounded-2xl border border-green-100 bg-linear-to-br from-green-50 to-teal-50 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow"
                     >
                       <div className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-white/40" />
                       <div className="w-12 h-12 rounded-xl bg-green-500 flex items-center justify-center shadow-md">
                         <Sparkles size={24} className="text-white" />
                       </div>
                       <div>
-                        <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-2">Cleanliness</p>
+                        <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-2">
+                          Cleanliness
+                        </p>
                         <div className="flex gap-1.5">
                           {[1, 2, 3, 4, 5].map((n) => (
                             <div
@@ -333,7 +374,16 @@ export default function Page() {
                           ))}
                         </div>
                         <p className="text-sm font-bold text-gray-700 mt-1.5">
-                          {["", "Messy", "Below avg", "Average", "Clean", "Very Clean"][userPreference.lifestyle.cleanliness]}
+                          {
+                            [
+                              "",
+                              "Messy",
+                              "Below avg",
+                              "Average",
+                              "Clean",
+                              "Very Clean",
+                            ][userPreference.lifestyle.cleanliness]
+                          }
                         </p>
                       </div>
                     </motion.div>
@@ -342,14 +392,44 @@ export default function Page() {
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.35, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                      className="col-span-2 relative overflow-hidden rounded-2xl border border-rose-100 bg-gradient-to-br from-rose-50 to-pink-50 p-5 hover:shadow-md transition-shadow"
+                      transition={{
+                        delay: 0.35,
+                        duration: 0.5,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                      className="col-span-2 relative overflow-hidden rounded-2xl border border-rose-100 bg-linear-to-br from-rose-50 to-pink-50 p-5 hover:shadow-md transition-shadow"
                     >
-                      <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-3">Habits</p>
+                      <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-3">
+                        Habits
+                      </p>
                       <div className="flex flex-wrap gap-2.5">
-                        <HabitChip icon={<Cigarette size={14} />} label={userPreference.lifestyle.smoking ? "Smoking OK" : "No Smoking"} active={userPreference.lifestyle.smoking} />
-                        <HabitChip icon={<Wine size={14} />} label={userPreference.lifestyle.drinking ? "Drinking OK" : "No Drinking"} active={userPreference.lifestyle.drinking} />
-                        <HabitChip icon={<PawPrint size={14} />} label={userPreference.lifestyle.pets ? "Pets OK" : "No Pets"} active={userPreference.lifestyle.pets} />
+                        <HabitChip
+                          icon={<Cigarette size={14} />}
+                          label={
+                            userPreference.lifestyle.smoking
+                              ? "Smoking OK"
+                              : "No Smoking"
+                          }
+                          active={userPreference.lifestyle.smoking}
+                        />
+                        <HabitChip
+                          icon={<Wine size={14} />}
+                          label={
+                            userPreference.lifestyle.drinking
+                              ? "Drinking OK"
+                              : "No Drinking"
+                          }
+                          active={userPreference.lifestyle.drinking}
+                        />
+                        <HabitChip
+                          icon={<PawPrint size={14} />}
+                          label={
+                            userPreference.lifestyle.pets
+                              ? "Pets OK"
+                              : "No Pets"
+                          }
+                          active={userPreference.lifestyle.pets}
+                        />
                       </div>
                     </motion.div>
 
@@ -374,17 +454,22 @@ export default function Page() {
                   className="flex flex-col items-center justify-center text-center py-20 px-8 rounded-3xl border-2 border-dashed border-green-200 bg-white gap-6"
                 >
                   <div className="relative">
-                    <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center shadow-inner">
+                    <div className="w-20 h-20 rounded-3xl bg-linear-to-br from-green-100 to-emerald-200 flex items-center justify-center shadow-inner">
                       <SlidersHorizontal size={34} className="text-green-600" />
                     </div>
                     <div className="absolute -top-1 -right-1 w-6 h-6 bg-amber-400 rounded-full flex items-center justify-center shadow">
-                      <span className="text-white text-[10px] font-black">!</span>
+                      <span className="text-white text-[10px] font-black">
+                        !
+                      </span>
                     </div>
                   </div>
                   <div>
-                    <h2 className="text-2xl font-extrabold text-gray-800 tracking-tight">No Preferences Yet</h2>
+                    <h2 className="text-2xl font-extrabold text-gray-800 tracking-tight">
+                      No Preferences Yet
+                    </h2>
                     <p className="text-sm text-gray-500 mt-2 max-w-sm leading-relaxed">
-                      Share your lifestyle, habits, and living style to unlock smarter, more compatible roommate matches on Roomio.
+                      Share your lifestyle, habits, and living style to unlock
+                      smarter, more compatible roommate matches on Roomio.
                     </p>
                   </div>
                   <button
@@ -393,7 +478,10 @@ export default function Page() {
                   >
                     <Sparkles size={16} />
                     Setup Preferences
-                    <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight
+                      size={15}
+                      className="group-hover:translate-x-1 transition-transform"
+                    />
                   </button>
                 </motion.div>
               )}
@@ -409,32 +497,58 @@ export default function Page() {
    SUB-COMPONENTS
 ══════════════════════════════════════ */
 
-function InfoCard({ title, icon, children }: { title: string; icon: React.ReactNode; children: React.ReactNode }) {
+function InfoCard({
+  title,
+  icon,
+  children,
+}: {
+  title: string;
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}) {
   return (
     <div className="rounded-2xl bg-white border border-green-100 shadow-sm p-5">
       <div className="flex items-center gap-2 mb-4">
         {icon}
-        <h3 className="text-xs font-extrabold uppercase tracking-widest text-gray-500">{title}</h3>
+        <h3 className="text-xs font-extrabold uppercase tracking-widest text-gray-500">
+          {title}
+        </h3>
       </div>
       <div className="space-y-3">{children}</div>
     </div>
   );
 }
 
-function InfoRow({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+function InfoRow({
+  icon,
+  label,
+  value,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+}) {
   return (
     <div className="flex items-center justify-between gap-3">
       <div className="flex items-center gap-1.5 text-gray-400 text-xs min-w-0">
-        <span className="text-green-500 flex-shrink-0">{icon}</span>
+        <span className="text-green-500 shrink-0">{icon}</span>
         <span className="truncate">{label}</span>
       </div>
-      <span className="text-xs font-bold text-gray-700 text-right truncate max-w-[130px]">{value}</span>
+      <span className="text-xs font-bold text-gray-700 text-right truncate max-w-32.5">
+        {value}
+      </span>
     </div>
   );
 }
 
 function BigTile({
-  icon, iconBg, label, value, accent, border, delay,
+  icon,
+  iconBg,
+  label,
+  value,
+  accent,
+  border,
+  delay,
 }: {
   icon: React.ReactNode;
   iconBg: string;
@@ -449,31 +563,48 @@ function BigTile({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className={`relative overflow-hidden rounded-2xl border ${border} bg-gradient-to-br ${accent} p-5 flex flex-col gap-3 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-default`}
+      className={`relative overflow-hidden rounded-2xl border ${border} bg-linear-to-br ${accent} p-5 flex flex-col gap-3 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-default`}
     >
       <div className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-white/40" />
-      <div className={`w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center text-white shadow-md flex-shrink-0`}>
+      <div
+        className={`w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center text-white shadow-md shrink-0`}
+      >
         {icon}
       </div>
       <div>
-        <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-0.5">{label}</p>
-        <p className="text-base font-extrabold text-gray-800 leading-snug">{value}</p>
+        <p className="text-[10px] uppercase tracking-widest font-bold text-gray-500 mb-0.5">
+          {label}
+        </p>
+        <p className="text-base font-bold text-gray-800 leading-snug">
+          {value}
+        </p>
       </div>
     </motion.div>
   );
 }
 
-function HabitChip({ icon, label, active = false }: { icon: React.ReactNode; label: string; active?: boolean }) {
+function HabitChip({
+  icon,
+  label,
+  active = false,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  active?: boolean;
+}) {
   return (
-    <div className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-semibold border transition-all ${
-      active ? "bg-green-600 text-white border-green-600 shadow-sm" : "bg-white text-gray-500 border-gray-200"
-    }`}>
+    <div
+      className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-semibold border transition-all ${
+        active
+          ? "bg-green-600 text-white border-green-600 shadow-sm"
+          : "bg-white text-gray-500 border-gray-200"
+      }`}
+    >
       {icon}
       {label}
     </div>
   );
 }
-
 
 
 
@@ -723,7 +854,7 @@ function HabitChip({ icon, label, active = false }: { icon: React.ReactNode; lab
 // }
 
 // /* COMPONENTS */
- 
+
 // function Info({ label, value }: any) {
 //   return (
 //     <div className="flex justify-between text-sm">

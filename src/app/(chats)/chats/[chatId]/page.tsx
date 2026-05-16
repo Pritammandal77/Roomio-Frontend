@@ -52,7 +52,6 @@ export default function ChatPage() {
     setLoading(true);
     const res = fetchAllMessages(chatId)
       .then((res) => {
-        console.log("messages", res);
 
         const msgs = res.data || [];
         setMessages(msgs);
@@ -62,7 +61,6 @@ export default function ChatPage() {
 
         const other = users.find((u: ChatUser) => u._id !== user._id);
 
-        console.log("other user", other);
 
         if (other) setOtherUser(other);
       })
@@ -208,7 +206,6 @@ export default function ChatPage() {
     });
   };
 
-  console.log("other user", otherUser && otherUser);
 
   return (
     <div className="flex flex-col w-full h-screen bg-green-50 font-sans">
