@@ -23,7 +23,7 @@ export default function WhyChooseUs() {
             transition={{ type: "spring", stiffness: 50, damping: 20 }}
             className="text-4xl md:text-6xl font-bold text-gray-900"
           >
-            Why Choose <span className="text-green-600">Roomioo</span>?
+            Why Choose <span className="text-green-600">Roomio</span>?
           </motion.h2>
 
           <motion.p 

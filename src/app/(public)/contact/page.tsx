@@ -25,7 +25,7 @@ export default function ContactPage() {
           <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-gray-900">Message Sent!</h2>
           <p className="text-gray-600 mt-2">
-            Thanks for reaching out. The Roomioo team will get back to you soon.
+            Thanks for reaching out. The Roomio team will get back to you soon.
           </p>
           <Link
             href="/"
@@ -159,7 +159,7 @@ export default function ContactPage() {
                   disabled={state.submitting}
                   className="w-full group bg-green-600 text-white font-bold py-5 rounded-[1.25rem] hover:bg-green-700 transition-all shadow-xl shadow-green-200 flex items-center justify-center gap-3 disabled:opacity-50 active:scale-[0.98]"
                 >
-                  {state.submitting ? "Sending..." : "Send to Roomioo Team"}
+                  {state.submitting ? "Sending..." : "Send to Roomio Team"}
                   <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </button>
               </form>

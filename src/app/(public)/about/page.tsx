@@ -154,7 +154,7 @@ export default function AboutUs() {
               variants={springFadeUp}
               className="text-lg md:text-2xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-medium"
             >
-              Roomioo is a high-performance matching ecosystem designed to
+              Roomio is a high-performance matching ecosystem designed to
               transform how students and professionals find their perfect living
               harmony.
             </motion.p>
@@ -251,7 +251,7 @@ export default function AboutUs() {
                     "A home is only as good as the people you share it with."
                   </h4>
                   <p className="opacity-80">
-                    Roomioo was built to ensure that every homecoming is a moment
+                    Roomio was built to ensure that every homecoming is a moment
                     of relief, not stress.
                   </p>
                 </motion.div>

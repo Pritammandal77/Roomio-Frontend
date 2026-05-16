@@ -692,7 +692,7 @@ function Tag({ text }: { text: string }) {
 //                         display: "inline-block",
 //                       }}
 //                     />
-//                     Roomioo Member
+//                     Roomio Member
 //                   </span>
 //                 </div>
 

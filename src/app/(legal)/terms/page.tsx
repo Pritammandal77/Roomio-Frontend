@@ -11,7 +11,7 @@ export default function TermsAndConditions() {
     {
       title: "1. Acceptance of Terms",
       icon: <Scale className="w-5 h-5 text-green-600" />,
-      content: "By accessing or using Roomioo, you agree to be bound by these Terms of Service. If you do not agree to all of these terms, you are prohibited from using the platform.",
+      content: "By accessing or using Roomio, you agree to be bound by these Terms of Service. If you do not agree to all of these terms, you are prohibited from using the platform.",
     },
     {
       title: "2. Platform Limitation & Disclaimer",
@@ -19,7 +19,7 @@ export default function TermsAndConditions() {
       content: (
         <div className="space-y-2">
           <p>
-            Roomioo is a matching platform only. We provide the technology to connect individuals seeking roommates based on lifestyle.
+            Roomio is a matching platform only. We provide the technology to connect individuals seeking roommates based on lifestyle.
           </p>
           <div className="bg-red-50 border-l-4 border-red-400 p-4 mt-2">
             <p className="text-red-700 font-medium">
@@ -37,7 +37,7 @@ export default function TermsAndConditions() {
     {
       title: "4. Liability",
       icon: <ShieldAlert className="w-5 h-5 text-green-600" />,
-      content: "Roomioo is not liable for any disputes, financial losses, property damage, or physical harm resulting from roommate connections or agreements made via the platform.",
+      content: "Roomio is not liable for any disputes, financial losses, property damage, or physical harm resulting from roommate connections or agreements made via the platform.",
     },
     {
       title: "5. Community Vibe",
@@ -104,7 +104,7 @@ export default function TermsAndConditions() {
                     <span>Chandrapur, Maharashtra</span>
                   </div>
                   <span className="hidden sm:block w-1.5 h-1.5 bg-green-200 rounded-full" />
-                  <span>Roomioo Support</span>
+                  <span>Roomio Support</span>
                   <span className="hidden sm:block w-1.5 h-1.5 bg-green-200 rounded-full" />
                   <span>Made in India</span>
                 </div>

@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
       content: (
         <div className="space-y-2">
           <p>
-            Roomioo collects several types of information from and about users:
+            Roomio collects several types of information from and about users:
           </p>
           <ul className="list-disc ml-6 space-y-2">
             <li>
@@ -133,7 +133,7 @@ export default function PrivacyPolicy() {
               Last Updated: {lastUpdated}
             </p>
             <p className="mt-4 text-gray-600 leading-relaxed">
-              Welcome to <strong>Roomioo</strong>. We value your privacy and are
+              Welcome to <strong>Roomio</strong>. We value your privacy and are
               committed to protecting your personal data collected through our
               platform, which connects individuals seeking roommates based on
               lifestyle preferences.
@@ -190,7 +190,7 @@ export default function PrivacyPolicy() {
                     <span>Chandrapur, Maharashtra</span>
                   </div>
                   <span className="hidden sm:block w-1.5 h-1.5 bg-green-200 rounded-full" />
-                  <span>Roomioo Support</span>
+                  <span>Roomio Support</span>
                   <span className="hidden sm:block w-1.5 h-1.5 bg-green-200 rounded-full" />
                   <span>Made in India</span>
                 </div>

@@ -240,7 +240,7 @@ export default function ListingCard({ listing, id, index, onDelete }: any) {
               <h2 className="text-xl font-bold text-gray-800">Are you sure?</h2>
               <p className="text-gray-500 mt-2 text-sm">
                 This action cannot be undone. This listing will be permanently
-                removed from Roomioo.
+                removed from Roomio.
               </p>
 
               <div className="flex gap-3 mt-6">

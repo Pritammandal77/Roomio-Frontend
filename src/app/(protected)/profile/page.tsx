@@ -214,7 +214,7 @@ export default function Page() {
                 <div className="relative">
                   <div className="flex items-center gap-2 mb-2">
                     <Sparkles size={16} />
-                    <span className="text-sm font-bold">Roomioo</span>
+                    <span className="text-sm font-bold">Roomio</span>
                   </div>
                   <p className="text-xs text-green-100 leading-relaxed">
                     Your preferences power smarter roommate matches. Keep them updated for the best results.
@@ -384,7 +384,7 @@ export default function Page() {
                   <div>
                     <h2 className="text-2xl font-extrabold text-gray-800 tracking-tight">No Preferences Yet</h2>
                     <p className="text-sm text-gray-500 mt-2 max-w-sm leading-relaxed">
-                      Share your lifestyle, habits, and living style to unlock smarter, more compatible roommate matches on Roomioo.
+                      Share your lifestyle, habits, and living style to unlock smarter, more compatible roommate matches on Roomio.
                     </p>
                   </div>
                   <button

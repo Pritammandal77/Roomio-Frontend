@@ -31,7 +31,7 @@ export default function FinalCTA() {
           transition={{ duration: 0.7 }}
           className="mt-6 text-lg"
         >
-          Whether you're looking for a place or listing one — Roomioo helps you
+          Whether you're looking for a place or listing one — Roomio helps you
           connect with the right people, faster.
         </motion.p>
 

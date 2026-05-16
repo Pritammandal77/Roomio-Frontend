@@ -44,8 +44,8 @@ export default function Navbar() {
             className="text-2xl font-semibold flex items-center tracking-wide"
             style={{ fontFamily: "var(--font-poppins)" }}
           >
-            <span className="text-gray-900">Roomi</span>
-            <span className="text-green-700">oo</span>
+            <span className="text-gray-900">Roomio</span>
+            {/* <span className="text-green-700">io</span> */}
           </Link>
           {/* DESKTOP NAV */}
           <nav className="hidden md:flex items-center gap-8">

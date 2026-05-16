@@ -25,11 +25,11 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: "Roomioo – Find Your Perfect Roommate/Flatmate",
-    template: "%s | Roomioo",
+    default: "Roomio – Find Your Perfect Roommate/Flatmate",
+    template: "%s | Roomio",
   },
   description:
-    "Roomioo helps you find the perfect roommate/flatmate based on lifestyle, preferences, and compatibility. Discover shared living made smarter.",
+    "Roomio helps you find the perfect roommate/flatmate based on lifestyle, preferences, and compatibility. Discover shared living made smarter.",
 
   keywords: [
     "roommate finder",
@@ -38,26 +38,26 @@ export const metadata: Metadata = {
     "flatmate finder",
     "shared living",
     "roommate app India",
-    "Roomioo",
+    "Roomio",
   ],
 
-  authors: [{ name: "Roomioo" }],
-  creator: "Roomioo",
+  authors: [{ name: "Roomio" }],
+  creator: "Roomio",
 
-  metadataBase: new URL("https://Roomioo.vercel.app"), // change after domain
+  metadataBase: new URL("https://www.roomio.living"), // change after domain
 
   openGraph: {
-    title: "Roomioo – Smart Roommate Finder",
+    title: "Roomio – Smart Roommate Finder",
     description:
-      "Find compatible roommates easily with Roomioo. Smart matching based on lifestyle.",
-    url: "https://Roomioo.vercel.app",
-    siteName: "Roomioo",
+      "Find compatible roommates easily with Roomio. Smart matching based on lifestyle.",
+    url: "https://www.roomio.living",
+    siteName: "Roomio",
     images: [
       {
         url: "/RoomiooLogo.jpeg", // add later
         width: 1200,
         height: 630,
-        alt: "Roomioo App Preview",
+        alt: "Roomio App Preview",
       },
     ],
     locale: "en_IN",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Roomioo – Find Your Perfect Roommate",
+    title: "Roomio – Find Your Perfect Roommate",
     description: "Smart roommate matching platform for better shared living.",
     images: ["/RoomiooLogo.jpeg"],
   },
