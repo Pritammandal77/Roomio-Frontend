@@ -43,7 +43,6 @@ export const metadata: Metadata = {
 
   authors: [{ name: "Roomio" }],
   creator: "Roomio",
-
   metadataBase: new URL("https://www.roomio.living"), // change after domain
 
   openGraph: {
@@ -54,7 +53,7 @@ export const metadata: Metadata = {
     siteName: "Roomio",
     images: [
       {
-        url: "/RoomiooLogo.jpeg", // add later
+        url: "/RoomioLogo.jpeg", // add later
         width: 1200,
         height: 630,
         alt: "Roomio App Preview",
@@ -68,11 +67,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Roomio – Find Your Perfect Roommate",
     description: "Smart roommate matching platform for better shared living.",
-    images: ["/RoomiooLogo.jpeg"],
+    images: ["/RoomioLogo.jpeg"],
   },
 
   icons: {
-    icon: "/RoomiooIcon.ico",
+    icon: "/RoomioIcon.ico",
   },
 
   robots: {
