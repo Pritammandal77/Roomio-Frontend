@@ -131,7 +131,7 @@ export default function Page() {
               initial={{ scale: 0.7, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="relative flex-shrink-0"
+              className="relative shrink-0"
             >
               <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl ring-4 ring-white overflow-hidden shadow-xl">
                 <img
@@ -529,12 +529,15 @@ function InfoRow({
   value: string;
 }) {
   return (
-    <div className="flex items-center justify-between gap-3">
-      <div className="flex items-center gap-1.5 text-gray-400 text-xs min-w-0">
+    <div className="flex items-start justify-between gap-4 py-1">
+      {/* Label section: Fixed width or shrink-0 prevents the email from squeezing it out */}
+      <div className="flex items-center gap-1.5 text-gray-400 text-xs shrink-0">
         <span className="text-green-500 shrink-0">{icon}</span>
-        <span className="truncate">{label}</span>
+        <span>{label}</span>
       </div>
-      <span className="text-xs font-bold text-gray-700 text-right truncate max-w-32.5">
+      
+      {/* Value section: Fully visible, responsive wrapping */}
+      <span className="text-xs font-bold text-gray-700 text-right break-all sm:break-word max-w-[60%]">
         {value}
       </span>
     </div>

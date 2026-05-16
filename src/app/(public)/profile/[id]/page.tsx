@@ -1,4 +1,3 @@
-
 "use client";
 import { getUserById } from "@/services/auth.api";
 import { PreferenceData } from "@/types/preference";
@@ -34,7 +33,9 @@ import { createOrFetchChat } from "@/services/chat.api";
 function Page() {
   const { id } = useParams();
   const [userData, setUserData] = useState<User | null>(null);
-  const [userPreference, setUserPreference] = useState<PreferenceData | null>(null);
+  const [userPreference, setUserPreference] = useState<PreferenceData | null>(
+    null,
+  );
   const router = useRouter();
 
   useEffect(() => {
@@ -84,7 +85,7 @@ function Page() {
     >
       {/* COVER BANNER */}
       <div className="relative h-40 sm:h-52 w-full overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-400 via-emerald-500 to-teal-500" />
+        <div className="absolute inset-0 bg-linear-to-br from-green-400 via-emerald-500 to-teal-500" />
         <div className="absolute -top-10 -left-10 w-60 h-60 rounded-full bg-white/10" />
         <div className="absolute top-8 left-1/3 w-32 h-32 rounded-full bg-white/10" />
         <div className="absolute -bottom-8 right-10 w-48 h-48 rounded-full bg-white/10" />
@@ -99,7 +100,7 @@ function Page() {
               initial={{ scale: 0.7, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="relative flex-shrink-0"
+              className="relative shrink-0"
             >
               <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl ring-4 ring-white overflow-hidden shadow-xl">
                 <img
@@ -157,7 +158,11 @@ function Page() {
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                delay: 0.1,
+                duration: 0.6,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
               <InfoCard
                 title="About"
@@ -165,7 +170,13 @@ function Page() {
               >
                 {userData.gender && (
                   <InfoRow
-                    icon={userData.gender === "Female" ? <Venus size={13} /> : <Mars size={13} />}
+                    icon={
+                      userData.gender === "Female" ? (
+                        <Venus size={13} />
+                      ) : (
+                        <Mars size={13} />
+                      )
+                    }
                     label="Gender"
                     value={userData.gender}
                   />
@@ -197,9 +208,13 @@ function Page() {
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.24, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                delay: 0.24,
+                duration: 0.6,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 p-5 text-white shadow-lg">
+              <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-green-500 to-emerald-600 p-5 text-white shadow-lg">
                 <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-white/10" />
                 <div className="absolute bottom-2 left-2 w-12 h-12 rounded-full bg-white/10" />
                 <div className="relative">
@@ -208,7 +223,8 @@ function Page() {
                     <span className="text-sm font-bold">Roomio</span>
                   </div>
                   <p className="text-xs text-green-100 leading-relaxed">
-                    This user's preferences help you find compatibility before starting a conversation.
+                    This user's preferences help you find compatibility before
+                    starting a conversation.
                   </p>
                 </div>
               </div>
@@ -296,8 +312,12 @@ function Page() {
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                      className="col-span-2 md:col-span-1 relative overflow-hidden rounded-2xl border border-green-100 bg-gradient-to-br from-green-50 to-teal-50 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow"
+                      transition={{
+                        delay: 0.3,
+                        duration: 0.5,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                      className="col-span-2 md:col-span-1 relative overflow-hidden rounded-2xl border border-green-100 bg-linear-to-br from-green-50 to-teal-50 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow"
                     >
                       <div className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-white/40" />
                       <div className="w-12 h-12 rounded-xl bg-green-500 flex items-center justify-center shadow-md">
@@ -320,9 +340,16 @@ function Page() {
                           ))}
                         </div>
                         <p className="text-sm font-bold text-gray-700 mt-1.5">
-                          {["", "Messy", "Below avg", "Average", "Clean", "Very Clean"][
-                            userPreference.lifestyle.cleanliness
-                          ]}
+                          {
+                            [
+                              "",
+                              "Messy",
+                              "Below avg",
+                              "Average",
+                              "Clean",
+                              "Very Clean",
+                            ][userPreference.lifestyle.cleanliness]
+                          }
                         </p>
                       </div>
                     </motion.div>
@@ -331,8 +358,12 @@ function Page() {
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.35, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                      className="col-span-2 relative overflow-hidden rounded-2xl border border-rose-100 bg-gradient-to-br from-rose-50 to-pink-50 p-5 hover:shadow-md transition-shadow"
+                      transition={{
+                        delay: 0.35,
+                        duration: 0.5,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                      className="col-span-2 relative overflow-hidden rounded-2xl border border-rose-100 bg-linear-to-br from-rose-50 to-pink-50 p-5 hover:shadow-md transition-shadow"
                     >
                       <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-3">
                         Habits
@@ -340,17 +371,29 @@ function Page() {
                       <div className="flex flex-wrap gap-2.5">
                         <HabitChip
                           icon={<Cigarette size={14} />}
-                          label={userPreference.lifestyle.smoking ? "Smoking OK" : "No Smoking"}
+                          label={
+                            userPreference.lifestyle.smoking
+                              ? "Smoking OK"
+                              : "No Smoking"
+                          }
                           active={userPreference.lifestyle.smoking}
                         />
                         <HabitChip
                           icon={<Wine size={14} />}
-                          label={userPreference.lifestyle.drinking ? "Drinking OK" : "No Drinking"}
+                          label={
+                            userPreference.lifestyle.drinking
+                              ? "Drinking OK"
+                              : "No Drinking"
+                          }
                           active={userPreference.lifestyle.drinking}
                         />
                         <HabitChip
                           icon={<PawPrint size={14} />}
-                          label={userPreference.lifestyle.pets ? "Pets OK" : "No Pets"}
+                          label={
+                            userPreference.lifestyle.pets
+                              ? "Pets OK"
+                              : "No Pets"
+                          }
                           active={userPreference.lifestyle.pets}
                         />
                       </div>
@@ -377,11 +420,13 @@ function Page() {
                   className="flex flex-col items-center justify-center text-center py-20 px-8 rounded-3xl border-2 border-dashed border-green-200 bg-white gap-6"
                 >
                   <div className="relative">
-                    <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center shadow-inner">
+                    <div className="w-20 h-20 rounded-3xl bg-linear-to-br from-green-100 to-emerald-200 flex items-center justify-center shadow-inner">
                       <SlidersHorizontal size={34} className="text-green-600" />
                     </div>
                     <div className="absolute -top-1 -right-1 w-6 h-6 bg-amber-400 rounded-full flex items-center justify-center shadow">
-                      <span className="text-white text-[10px] font-black">!</span>
+                      <span className="text-white text-[10px] font-black">
+                        !
+                      </span>
                     </div>
                   </div>
                   <div>
@@ -408,78 +453,117 @@ export default Page;
    SUB-COMPONENTS
 ══════════════════════════════════════ */
 
-function InfoCard({ title, icon, children }: { title: string; icon: React.ReactNode; children: React.ReactNode }) {
+function InfoCard({
+  title,
+  icon,
+  children,
+}: {
+  title: string;
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}) {
   return (
     <div className="rounded-2xl bg-white border border-green-100 shadow-sm p-5">
       <div className="flex items-center gap-2 mb-4">
         {icon}
-        <h3 className="text-xs font-extrabold uppercase tracking-widest text-gray-500">{title}</h3>
+        <h3 className="text-xs font-extrabold uppercase tracking-widest text-gray-500">
+          {title}
+        </h3>
       </div>
       <div className="space-y-3">{children}</div>
     </div>
   );
 }
 
-function InfoRow({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+function InfoRow({
+  icon,
+  label,
+  value,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+}) {
   return (
-    <div className="flex items-center justify-between gap-3">
-      <div className="flex items-center gap-1.5 text-gray-400 text-xs min-w-0">
+    <div className="flex items-start justify-between gap-4 py-1">
+      {/* Label section: Fixed width or shrink-0 prevents the email from squeezing it out */}
+      <div className="flex items-center gap-1.5 text-gray-400 text-xs shrink-0">
         <span className="text-green-500 shrink-0">{icon}</span>
-        <span className="truncate">{label}</span>
+        <span>{label}</span>
       </div>
-      <span className="text-xs font-bold text-gray-700 text-right truncate max-w-[130px]">{value}</span>
+
+      {/* Value section: Fully visible, responsive wrapping */}
+      <span className="text-xs font-bold text-gray-700 text-right break-all sm:break-word max-w-[60%]">
+        {value}
+      </span>
     </div>
   );
 }
 
-function BigTile({ icon, iconBg, label, value, accent, border, delay }: {
-  icon: React.ReactNode; iconBg: string; label: string; value: string;
-  accent: string; border: string; delay: number;
+function BigTile({
+  icon,
+  iconBg,
+  label,
+  value,
+  accent,
+  border,
+  delay,
+}: {
+  icon: React.ReactNode;
+  iconBg: string;
+  label: string;
+  value: string;
+  accent: string;
+  border: string;
+  delay: number;
 }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className={`relative overflow-hidden rounded-2xl border ${border} bg-gradient-to-br ${accent} p-5 flex flex-col gap-3 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-default`}
+      className={`relative overflow-hidden rounded-2xl border ${border} bg-linear-to-br ${accent} p-5 flex flex-col gap-3 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-default`}
     >
       <div className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-white/40" />
-      <div className={`w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center text-white shadow-md shrink-0`}>
+      <div
+        className={`w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center text-white shadow-md shrink-0`}
+      >
         {icon}
       </div>
       <div>
-        <p className="text-[10px] uppercase tracking-widest font-bold text-gray-500 mb-0.5">{label}</p>
-        <p className="text-base font-bold text-gray-800 leading-snug">{value}</p>
+        <p className="text-[10px] uppercase tracking-widest font-bold text-gray-500 mb-0.5">
+          {label}
+        </p>
+        <p className="text-base font-bold text-gray-800 leading-snug">
+          {value}
+        </p>
       </div>
     </motion.div>
   );
 }
 
-function HabitChip({ icon, label, active = false }: { icon: React.ReactNode; label: string; active?: boolean }) {
+function HabitChip({
+  icon,
+  label,
+  active = false,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  active?: boolean;
+}) {
   return (
-    <div className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-semibold border transition-all ${
-      active ? "bg-green-600 text-white border-green-600 shadow-sm" : "bg-white text-gray-500 border-gray-200"
-    }`}>
+    <div
+      className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-semibold border transition-all ${
+        active
+          ? "bg-green-600 text-white border-green-600 shadow-sm"
+          : "bg-white text-gray-500 border-gray-200"
+      }`}
+    >
       {icon}
       {label}
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Old UI , fully working
 
@@ -492,7 +576,7 @@ function HabitChip({ icon, label, active = false }: { icon: React.ReactNode; lab
 // import { User } from "../../../../types/user";
 // import { LucideBadgeQuestionMark, MessageCircleCode } from "lucide-react";
 // import { createOrFetchChat } from "@/services/chat.api";
- 
+
 // function page() {
 //   const { id } = useParams();
 
