@@ -211,7 +211,7 @@ export default function AboutUs() {
                   variants={hoverScale}
                   whileHover="hover"
                   whileTap="tap"
-                  className="p-8 bg-purple-100 rounded-4xl md:rounded-[2.5rem] flex flex-col justify-between aspect-square cursor-pointer"
+                  className="p-8 bg-purple-100 rounded-4xl md:rounded-[2.5rem] flex flex-col gap-10 xl:gap-0 justify-between xl:aspect-square cursor-pointer"
                 >
                   <Zap className="w-12 h-12 text-purple-500 fill-purple-200" />
                   <div>
@@ -229,7 +229,7 @@ export default function AboutUs() {
                   variants={hoverScale}
                   whileHover="hover"
                   whileTap="tap"
-                  className="p-8 bg-gray-900 text-white rounded-4xl md:rounded-[2.5rem] flex flex-col justify-between aspect-square cursor-pointer"
+                  className="p-8 bg-gray-900 text-white rounded-4xl md:rounded-[2.5rem] flex flex-col gap-10 xl:gap-0 justify-between xl:aspect-square cursor-pointer"
                 >
                   <ShieldCheck className="w-12 h-12 text-gray-400" />
                   <div>
@@ -331,7 +331,7 @@ export default function AboutUs() {
               transition={{ type: "spring", stiffness: 60 }}
               className="relative group w-full max-w-sm lg:w-1/3"
             >
-              <div className="absolute -inset-4 bg-green-500/20 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute -inset-4 bg-blue-500/20 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative aspect-4/5 bg-gray-800 rounded-[2.5rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 border border-white/10 shadow-2xl">
                 <Image
                   src="/pritamImg.jpg"

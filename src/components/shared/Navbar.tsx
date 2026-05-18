@@ -67,6 +67,15 @@ export default function Navbar() {
             >
               Explore
             </Link>
+            <Link href="/about" className="text-gray-600 hover:text-green-600">
+              About Us
+            </Link>
+            <Link
+              href="/contact"
+              className="text-gray-600 hover:text-green-600"
+            >
+              Contact
+            </Link>
             {user && (
               <Link
                 href="/chats"
@@ -111,12 +120,22 @@ export default function Navbar() {
           className={`md:hidden relative overflow-hidden flex flex-col transition-all duration-300 ease-in-out bg-white border-t border-gray-100
           ${
             isOpen
-              ? "max-h-60 opacity-100 translate-y-0 py-4 px-6"
+              ? "max-h-80 opacity-100 translate-y-0 py-4 px-6"
               : "max-h-0 opacity-0 -translate-y-4 px-6"
           }
           `}
         >
           <div className={`space-y-4 ${user && "pb-10"}`}>
+            {user && (
+              <Link
+                href="/profile"
+                onClick={() => setIsOpen(false)}
+                className="block text-gray-600"
+              >
+                Profile
+              </Link>
+            )}
+
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
@@ -131,16 +150,7 @@ export default function Navbar() {
             >
               Explore
             </Link>
-            {user && (
-              <Link
-                href="/profile"
-                onClick={() => setIsOpen(false)}
-                className="block text-gray-600"
-              >
-                Profile
-              </Link>
-            )}
-            
+
             {user && (
               <Link
                 href="/listing/new"
@@ -150,6 +160,21 @@ export default function Navbar() {
                 List Property
               </Link>
             )}
+
+            <Link
+              href="/about"
+              onClick={() => setIsOpen(false)}
+              className="block text-gray-600"
+            >
+              About Us
+            </Link>
+            <Link
+              href="/contact"
+              onClick={() => setIsOpen(false)}
+              className="block text-gray-600"
+            >
+              Contact
+            </Link>
 
             {user && (
               <Link
