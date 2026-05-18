@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/shared/Navbar";
 import ReduxProvider from "@/lib/rtk/providers/ReduxProvider";
 import { Toaster } from "sonner";
 import AppInitializer from "@/components/middleware/AppInitializer";
+import { Analytics } from '@vercel/analytics/react';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -95,6 +95,7 @@ export default function RootLayout({
           <AppInitializer>{children}</AppInitializer>
           <Toaster position="top-center" richColors closeButton />
         </ReduxProvider>
+        <Analytics/>
       </body>
     </html>
   );
