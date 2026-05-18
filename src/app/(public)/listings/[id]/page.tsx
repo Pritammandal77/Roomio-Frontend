@@ -19,6 +19,7 @@ import {
   HomeIcon,
   Bed,
   Refrigerator,
+  InfoIcon,
 } from "lucide-react";
 import ImageSlider from "@/components/ui/ImageSlider";
 import PrefCard from "@/components/ui/PrefCard";
@@ -107,7 +108,7 @@ function Page() {
           {/* Image slider component */}
           <ImageSlider images={pictures} />
 
-          <div className="grid md:grid-cols-3 gap-6 mt-6">
+          <div className="flex flex-col-reverse md:grid md:grid-cols-3 gap-6 mt-6">
             <div className="md:col-span-2 space-y-6">
               <div className="bg-white rounded-2xl shadow-sm flex flex-col md:flex-row">
                 <div className="flex flex-col w-full md:w-[70%] p-5">
@@ -128,13 +129,26 @@ function Page() {
                   </p>
                 </div>
 
-                {user && (
+                {user ? (
                   <div className="bg-white px-5 py-3 rounded-2xl shadow-sm md:w-[30%]">
                     <button
                       onClick={() => setShowModal(true)}
                       className="w-full py-3 rounded-xl bg-linear-to-r from-green-500 to-green-600 text-white font-semibold shadow-md hover:scale-[1.02] transition"
                     >
                       I'm Interested
+                    </button>
+
+                    <p className="text-xs text-gray-500 mt-2 text-center">
+                      Owner will be notified instantly
+                    </p>
+                  </div>
+                ) : (
+                  <div className="bg-white px-5 py-3 rounded-2xl shadow-sm md:w-[30%]">
+                    <button
+                      onClick={() => toast.error("Please login to continue")}
+                      className="w-full py-3 flex items-center justify-center gap-3 rounded-xl bg-linear-to-r from-gray-500 to-gray-600 text-white font-semibold shadow-md hover:scale-[1.02] transition"
+                    >
+                     <InfoIcon size={20}/>  I'm Interested
                     </button>
 
                     <p className="text-xs text-gray-500 mt-2 text-center">
@@ -292,7 +306,7 @@ function Page() {
               </div>
 
               {user && (
-                <div className="bg-white p-6 rounded-2xl shadow-sm">
+                <div className="bg-white hidden xl:inline p-6 rounded-2xl shadow-sm">
                   <button
                     onClick={() => setShowModal(true)}
                     className="w-full py-3 rounded-xl bg-linear-to-r from-green-500 to-green-600 text-white font-semibold shadow-md hover:scale-[1.02] transition"

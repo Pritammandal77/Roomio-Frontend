@@ -101,7 +101,14 @@ export default function AboutUs() {
 
             <motion.div
               className="absolute rounded-full bg-green-400"
-              style={{ width: 420, height: 420, top: -100, left: -80, filter: "blur(90px)", opacity: 0.18 }}
+              style={{
+                width: 420,
+                height: 420,
+                top: -100,
+                left: -80,
+                filter: "blur(90px)",
+                opacity: 0.18,
+              }}
               custom={{ x: [0, 40, 10, 0], y: [0, -30, 20, 0], duration: 18 }}
               variants={orbVariants}
               animate="animate"
@@ -109,7 +116,14 @@ export default function AboutUs() {
 
             <motion.div
               className="absolute rounded-full bg-emerald-300"
-              style={{ width: 300, height: 300, top: "30%", right: -80, filter: "blur(70px)", opacity: 0.15 }}
+              style={{
+                width: 300,
+                height: 300,
+                top: "30%",
+                right: -80,
+                filter: "blur(70px)",
+                opacity: 0.15,
+              }}
               custom={{ x: [0, -30, -10, 0], y: [0, 30, -15, 0], duration: 22 }}
               variants={orbVariants}
               animate="animate"
@@ -117,7 +131,14 @@ export default function AboutUs() {
 
             <motion.div
               className="absolute rounded-full bg-green-500"
-              style={{ width: 240, height: 240, bottom: -60, left: "38%", filter: "blur(60px)", opacity: 0.13 }}
+              style={{
+                width: 240,
+                height: 240,
+                bottom: -60,
+                left: "38%",
+                filter: "blur(60px)",
+                opacity: 0.13,
+              }}
               custom={{ x: [0, 20, -20, 0], y: [0, -20, 10, 0], duration: 15 }}
               variants={orbVariants}
               animate="animate"
@@ -137,7 +158,8 @@ export default function AboutUs() {
               variants={springFadeUp}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 border border-gray-200 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-8"
             >
-              <Sparkles className="w-3 h-3 text-green-600" /> Defining the Future of Living
+              <Sparkles className="w-3 h-3 text-green-600" /> Defining the
+              Future of Living
             </motion.div>
 
             <motion.h1
@@ -177,8 +199,8 @@ export default function AboutUs() {
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
                   Most platforms focus on the property. We focus on the people.
-                  Traditional roommate finding is a gamble- a roll of the dice with
-                  your peace of mind.
+                  Traditional roommate finding is a gamble- a roll of the dice
+                  with your peace of mind.
                 </p>
                 <motion.div
                   variants={staggerContainer}
@@ -311,11 +333,15 @@ export default function AboutUs() {
                   whileHover={{ y: -10 }}
                   className="group p-8 hover:bg-gray-50 rounded-3xl transition-colors duration-300 text-center border border-transparent hover:border-gray-100"
                 >
-                  <div className={`w-16 h-16 ${tech.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:rotate-12 transition-transform`}>
+                  <div
+                    className={`w-16 h-16 ${tech.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:rotate-12 transition-transform`}
+                  >
                     <tech.icon className={`w-8 h-8 ${tech.iconColor}`} />
                   </div>
                   <h3 className="text-xl font-bold mb-3">{tech.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{tech.desc}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    {tech.desc}
+                  </p>
                 </motion.div>
               ))}
             </motion.div>
@@ -362,13 +388,29 @@ export default function AboutUs() {
                 completing my final-semester BSc IT.
               </p>
               <div className="grid grid-cols-2 gap-8 py-8 border-y border-white/10">
-                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.3 }}>
-                  <p className="text-2xl md:text-3xl font-bold text-white">3+</p>
-                  <p className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">Products Delivered</p>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <p className="text-2xl md:text-3xl font-bold text-white">
+                    3+
+                  </p>
+                  <p className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">
+                    Products Delivered
+                  </p>
                 </motion.div>
-                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-                  <p className="text-2xl md:text-3xl font-bold text-white">MERN</p>
-                  <p className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">Core Specialization</p>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <p className="text-2xl md:text-3xl font-bold text-white">
+                    MERN
+                  </p>
+                  <p className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">
+                    Core Specialization
+                  </p>
                 </motion.div>
               </div>
             </motion.div>
@@ -388,7 +430,7 @@ export default function AboutUs() {
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
               <Link
-                href="/signup"
+                href="/listings/all"
                 className="w-full sm:w-auto group px-10 py-5 bg-green-600 text-white font-bold rounded-2xl hover:bg-green-700 transition-all flex items-center justify-center gap-3 text-lg shadow-xl shadow-green-200"
               >
                 Start Matching{" "}
@@ -404,7 +446,10 @@ export default function AboutUs() {
             <p className="text-gray-400 text-xs md:text-sm font-medium pt-12">
               Made with{" "}
               <Heart className="w-4 h-4 inline-block text-red-500 fill-red-500 mx-1" />{" "}
-              in Chandrapur.
+              by {" "}
+              <Link href="https://pritamm.vercel.app" target="_blank" className="text-purple-700">
+              Pritam.
+              </Link>
             </p>
           </motion.div>
         </section>
