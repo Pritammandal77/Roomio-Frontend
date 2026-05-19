@@ -50,7 +50,6 @@ export default function Page() {
       try {
         const res = await getPreference();
         const data = res.data;
-        console.log(res);
         setIsEdit(true);
 
         setFormData({

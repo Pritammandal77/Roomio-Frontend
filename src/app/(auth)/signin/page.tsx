@@ -26,15 +26,6 @@ export default function SignUp() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // try {
-    //   const res = await logInUser(formData);
-    //   console.log(res);
-    //   toast.success("login succcessfull");
-    //   router.push("/");
-    // } catch (error) {
-    //   toast.error("Something went wrong");
-    // }
-
     try {
       const res = await logInUser(formData);
       // success case

@@ -95,7 +95,6 @@ export default function SignUp() {
     setIsOtpSending(true);
     try {
       const res = await sendOtp({ email: formData.email });
-      console.log("send otp", res);
       toast.success("OTP sent");
       setIsOtpSent(true);
       setTimer(300);

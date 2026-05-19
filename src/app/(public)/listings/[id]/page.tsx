@@ -89,9 +89,8 @@ function Page() {
         message,
       });
 
-      console.log(res);
 
-      toast.success("Interest sent successfully 🚀");
+      toast.success("Interest sent successfully");
       setShowModal(false);
       setMessage("");
     } catch (error) {

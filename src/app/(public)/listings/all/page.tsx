@@ -56,7 +56,6 @@ function Page() {
     try {
       const res = await fetchAllListings();
       setAllListingsData(res.data || []);
-      console.log("rooms data", res.data);
     } catch (error) {
       toast.error("Something went wrong");
     } finally {
@@ -136,7 +135,6 @@ function Page() {
       );
 
       const res = await filterListings(cleanedFilters);
-      console.log(res);
       setAllListingsData(res.data || []);
     } catch (error) {
       toast.error("Filter failed");

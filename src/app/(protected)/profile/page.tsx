@@ -62,7 +62,6 @@ export default function Page() {
       </div>
     );
   } else {
-    console.log(user);
   }
 
   const formatDate = (date: string) =>
