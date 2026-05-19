@@ -67,9 +67,6 @@ export default function Navbar() {
             >
               Explore
             </Link>
-            <Link href="/about" className="text-gray-600 hover:text-green-600">
-              About Us
-            </Link>
             <Link
               href="/contact"
               className="text-gray-600 hover:text-green-600"
@@ -160,14 +157,6 @@ export default function Navbar() {
                 List Property
               </Link>
             )}
-
-            <Link
-              href="/about"
-              onClick={() => setIsOpen(false)}
-              className="block text-gray-600"
-            >
-              About Us
-            </Link>
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}

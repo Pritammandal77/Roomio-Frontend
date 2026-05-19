@@ -38,7 +38,7 @@ export default function SignUp() {
   const [timer, setTimer] = useState(0);
   const [otpArray, setOtpArray] = useState(Array(6).fill(""));
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-
+  const [isOtpSending , setIsOtpSending] = useState<boolean>(false)
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string>("");
 
@@ -90,13 +90,14 @@ export default function SignUp() {
       toast.error("Enter email first");
       return;
     }
-
+    setIsOtpSending(true);
     try {
       const res = await sendOtp({ email: formData.email });
       console.log("send otp", res);
       toast.success("OTP sent");
       setIsOtpSent(true);
       setTimer(300);
+      setIsOtpSending(false)
     } catch (err: any) {
       toast.error(err?.response?.data?.message || "Failed to send OTP");
     }
@@ -265,17 +266,21 @@ export default function SignUp() {
                   />
                 </div>
 
-                <button
+               <button
                   type="button"
                   onClick={handleSendOtp}
-                  disabled={timer > 0}
-                  className="px-4 py-2 rounded-xl bg-green-600 text-white text-sm font-medium shadow hover:bg-green-700 disabled:bg-gray-400 transition"
+                  disabled={timer > 0 || isOtpSending}
+                  className="min-w-20 md:min-w-30 flex items-center justify-center px-4 py-2 rounded-xl bg-green-600 text-white text-sm font-medium shadow hover:bg-green-700 disabled:bg-gray-400 transition"
                 >
-                  {timer > 0
-                    ? `Resend in ${Math.floor(timer / 60)}:${(timer % 60)
-                        .toString()
-                        .padStart(2, "0")}`
-                    : "Send OTP"}
+                  {isOtpSending ? (
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  ) : timer > 0 ? (
+                    `Resend in ${Math.floor(timer / 60)}:${(timer % 60)
+                      .toString()
+                      .padStart(2, "0")}`
+                  ) : (
+                    "Send OTP"
+                  )}
                 </button>
               </div>
 
@@ -366,7 +371,7 @@ export default function SignUp() {
               icon={PhoneCallIcon}
               name="mobileNumber"
               type="number"
-              placeholder="Mobile"
+              placeholder="Mobile (Optional)"
               onChange={handleChange}
             />
 
@@ -666,3 +671,7 @@ export default function SignUp() {
 //     </section>
 //   );
 // }
+
+
+
+
