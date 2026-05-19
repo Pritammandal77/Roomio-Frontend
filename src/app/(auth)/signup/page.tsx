@@ -9,6 +9,8 @@ import {
   Users,
   Camera,
   PhoneCallIcon,
+  CornerLeftUpIcon,
+  CircleCheckBig,
 } from "lucide-react";
 import Link from "next/link";
 import { registerUser } from "@/services/auth.api";
@@ -38,7 +40,7 @@ export default function SignUp() {
   const [timer, setTimer] = useState(0);
   const [otpArray, setOtpArray] = useState(Array(6).fill(""));
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-  const [isOtpSending , setIsOtpSending] = useState<boolean>(false)
+  const [isOtpSending, setIsOtpSending] = useState<boolean>(false);
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string>("");
 
@@ -97,7 +99,7 @@ export default function SignUp() {
       toast.success("OTP sent");
       setIsOtpSent(true);
       setTimer(300);
-      setIsOtpSending(false)
+      setIsOtpSending(false);
     } catch (err: any) {
       toast.error(err?.response?.data?.message || "Failed to send OTP");
     }
@@ -266,14 +268,18 @@ export default function SignUp() {
                   />
                 </div>
 
-               <button
+                <button
                   type="button"
                   onClick={handleSendOtp}
                   disabled={timer > 0 || isOtpSending}
-                  className="min-w-20 md:min-w-30 flex items-center justify-center px-4 py-2 rounded-xl bg-green-600 text-white text-sm font-medium shadow hover:bg-green-700 disabled:bg-gray-400 transition"
+                  className={`min-w-20 md:min-w-30 flex items-center justify-center px-4 py-2 rounded-xl bg-blue-500 text-white text-sm font-medium shadow hover:bg-green-700 transition ${isVerified && "bg-green-500"}`}
                 >
                   {isOtpSending ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  ) : isVerified ? (
+                    <span className="text-sm flex items-center justify-center gap-2">
+                      Verified <CircleCheckBig size={17}/>
+                    </span>
                   ) : timer > 0 ? (
                     `Resend in ${Math.floor(timer / 60)}:${(timer % 60)
                       .toString()
@@ -376,34 +382,34 @@ export default function SignUp() {
             />
 
             <div className="flex items-start gap-2 px-1 py-2">
-             <input
-                  type="checkbox"
-                  id="terms"
-                  checked={acceptedTerms}
-                  onChange={(e) => setAcceptedTerms(e.target.checked)}
-                  className="mt-1 w-4 h-4 accent-green-600 cursor-pointer"
-                />
-                <label
-                  htmlFor="terms"
-                  className="text-sm text-gray-600 cursor-pointer"
+              <input
+                type="checkbox"
+                id="terms"
+                checked={acceptedTerms}
+                onChange={(e) => setAcceptedTerms(e.target.checked)}
+                className="mt-1 w-4 h-4 accent-green-600 cursor-pointer"
+              />
+              <label
+                htmlFor="terms"
+                className="text-sm text-gray-600 cursor-pointer"
+              >
+                I agree to the{" "}
+                <Link
+                  href="/terms"
+                  className="text-green-600 hover:underline font-medium"
                 >
-                  I agree to the{" "}
-                  <Link
-                    href="/terms"
-                    className="text-green-600 hover:underline font-medium"
-                  >
-                    Terms & Conditions
-                  </Link>{" "}
-                  and{" "}
-                  <Link
-                    href="/privacy"
-                    className="text-green-600 hover:underline font-medium"
-                  >
-                    Privacy Policy
-                  </Link>
-                  .
-                </label>
-              </div>
+                  Terms & Conditions
+                </Link>{" "}
+                and{" "}
+                <Link
+                  href="/privacy"
+                  className="text-green-600 hover:underline font-medium"
+                >
+                  Privacy Policy
+                </Link>
+                .
+              </label>
+            </div>
 
             <button
               type="submit"
@@ -671,7 +677,3 @@ export default function SignUp() {
 //     </section>
 //   );
 // }
-
-
-
-

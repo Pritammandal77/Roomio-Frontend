@@ -17,6 +17,7 @@ import {
   Wine,
   PawPrint,
   Text,
+  MapPinCheck,
 } from "lucide-react";
 import { RoomForm } from "@/types/rooms";
 import { toast } from "sonner";
@@ -55,6 +56,7 @@ export default function Page() {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [locationSet, setLocationSet] = useState(false);
+  const [isDetectingLocation, setIsDetectingLocation] = useState(false);
 
   const [images, setImages] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
@@ -116,7 +118,7 @@ export default function Page() {
       alert("Geolocation not supported");
       return;
     }
-
+    setIsDetectingLocation(true);
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const lat = position.coords.latitude;
@@ -156,6 +158,7 @@ export default function Page() {
           }));
 
           setLocationSet(true);
+          setIsDetectingLocation(false);
         } catch (err) {
           console.error(err);
           alert("Failed to fetch address");
@@ -203,7 +206,7 @@ export default function Page() {
       );
 
       toast.success("Room listed successfully");
-      router.push("/")
+      router.push("/");
     } catch (err: any) {
       toast.error(err.response?.data?.message || "Error");
     } finally {
@@ -216,7 +219,7 @@ export default function Page() {
       <div className="min-h-screen py-20 bg-linear-to-br from-green-50 via-white to-green-100 flex items-center justify-center px-3 p-6">
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-3xl bg-white border border-green-100 shadow-xl rounded-3xl p-8 space-y-8"
+          className="w-full max-w-3xl bg-white border border-green-100 shadow-xl rounded-3xl p-6 md:p-8 space-y-8"
         >
           {/* Header */}
           <div>
@@ -253,6 +256,39 @@ export default function Page() {
                 />
               </div>
 
+              <div className="">
+                <label className="label">
+                  <MapPin size={16} className="icon" />
+                  Add Location
+                </label>
+                <div className="w-full pb-1 ">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setLocationMode("auto");
+                      getLocation();
+                    }}
+                    className={`btn-toggle cursor-pointer bg-blue-400 hover:bg-blue-500  ${locationMode === "auto" && "active"} w-full`}
+                  >
+                    {locationMode === "auto" && locationSet ? (
+                      <p className="text-sm flex items-center justify-center gap-3">
+                        <MapPinCheck size={18} /> Location detected successfully
+                      </p>
+                    ) : isDetectingLocation ? (
+                      <span className="flex items-center justify-center gap-3">
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <span>Detecting Location</span>
+                      </span>
+                    ) : (
+                      <p>Auto Detect</p>
+                    )}
+                  </button>
+                </div>
+                <p className="text-[10px] text-green-600 mt-1">
+                  Uses your current location to help roommates find your space.
+                </p>
+              </div>
+
               <div>
                 <label className="label">
                   <Building2 size={16} className="icon" />
@@ -285,29 +321,6 @@ export default function Page() {
                   className="input"
                   required
                 />
-              </div>
-
-              <div className="">
-                <label className="label">
-                  <MapPin size={16} className="icon" />
-                  Add Location
-                </label>
-                <div className="w-full pb-1">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setLocationMode("auto");
-                      getLocation();
-                    }}
-                    className={`btn-toggle ${locationMode === "auto" && "active"} w-full`}
-                  >
-                    Auto Detect
-                  </button>
-                </div>
-
-                {locationMode === "auto" && locationSet && (
-                  <p className="text-green-600 text-sm">✅ Location detected</p>
-                )}
               </div>
             </div>
           </div>
@@ -629,9 +642,6 @@ export default function Page() {
             transition: all 0.2s ease;
           }
 
-          .btn-toggle:hover {
-            background: #f0fdf4;
-          }
           .btn-toggle.active {
             background: #22c55e;
             color: white;

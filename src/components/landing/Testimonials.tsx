@@ -27,8 +27,7 @@ const testimonials: Testimonial[] = [
     name: "Riya Sharma",
     role: "Lister",
     rating: 4,
-    review:
-      "Listing rooms is so easy. Got multiple genuine requests instantly.",
+    review: "Listing rooms is so easy. Got multiple genuine requests instantly.",
     img: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
@@ -95,8 +94,127 @@ const testimonials: Testimonial[] = [
     review: "Roomio made listing and managing tenants super simple.",
     img: "https://randomuser.me/api/portraits/women/55.jpg",
   },
+  {
+    id: 11,
+    name: "Aditya Joshi",
+    role: "Seeker",
+    rating: 5,
+    review: "Moving to a new city was scary, but I found a great flatmate who shares the same food preferences. The profile tags are a lifesaver!",
+    img: "https://randomuser.me/api/portraits/men/15.jpg",
+  },
+  {
+    id: 12,
+    name: "Meera Reddy",
+    role: "Lister",
+    rating: 4,
+    review: "The horizontal scroll format for listings makes it so easy to look through profiles quickly. Got a great response on my 2BHK list.",
+    img: "https://randomuser.me/api/portraits/women/33.jpg",
+  },
+  {
+    id: 13,
+    name: "Rohan Das",
+    role: "Seeker",
+    rating: 5,
+    review: "No broker intervention, no random extra charges. Just direct connection with people who actually want to share a space.",
+    img: "https://randomuser.me/api/portraits/men/42.jpg",
+  },
+  {
+    id: 14,
+    name: "Kriti Malhotra",
+    role: "Lister",
+    rating: 5,
+    review: "As a working professional, I didn't want random people calling me all day. The in-app chat let me filter out serious seekers first.",
+    img: "https://randomuser.me/api/portraits/women/19.jpg",
+  },
+  {
+    id: 15,
+    name: "Devendra Choudhury",
+    role: "Seeker",
+    rating: 4,
+    review: "Found a room walking distance from my office in Hitech City. Budget was tight, but splitting it made it totally affordable.",
+    img: "https://randomuser.me/api/portraits/men/62.jpg",
+  },
+  {
+    id: 16,
+    name: "Shalini Saxena",
+    role: "Lister",
+    rating: 5,
+    review: "I was looking for a specific kind of roommate who respects privacy and cleanliness. Roomioo's lifestyle filters worked like a charm.",
+    img: "https://randomuser.me/api/portraits/women/82.jpg",
+  },
+  {
+    id: 17,
+    name: "Pranav Rao",
+    role: "Seeker",
+    rating: 5,
+    review: "Highly interactive platform. Found guys from my own university to rent a 3BHK together. Saved us massive brokerage.",
+    img: "https://randomuser.me/api/portraits/men/65.jpg",
+  },
+  {
+    id: 18,
+    name: "Tanvi Bhatia",
+    role: "Lister",
+    rating: 4,
+    review: "Super clean dashboard. I could easily toggle my room listing status to 'Filled' once I found a flatmate so I didn't get extra spams.",
+    img: "https://randomuser.me/api/portraits/women/47.jpg",
+  },
+  {
+    id: 19,
+    name: "Siddharth Mishra",
+    role: "Seeker",
+    rating: 5,
+    review: "The maps feature and area-specific filters are top-notch. Found a room exactly where I wanted in less than a week.",
+    img: "https://randomuser.me/api/portraits/men/11.jpg",
+  },
+  {
+    id: 20,
+    name: "Ishita Dutta",
+    role: "Seeker",
+    rating: 5,
+    review: "Very smooth verification process. It gives you peace of mind knowing that the profiles you are chatting with are genuine.",
+    img: "https://randomuser.me/api/portraits/women/21.jpg",
+  },
+  {
+    id: 21,
+    name: "Varun Hegde",
+    role: "Lister",
+    rating: 4,
+    review: "Got my flat filled up in Bangalore's peak rush season without talking to a single broker. Absolutely love the design paradigm.",
+    img: "https://randomuser.me/api/portraits/men/81.jpg",
+  },
+  {
+    id: 22,
+    name: "Anjali Pillai",
+    role: "Seeker",
+    rating: 5,
+    review: "The UI layout makes it highly scannable. I found a flatmate who matches my sleep cycle and habits perfectly. Incredible app!",
+    img: "https://randomuser.me/api/portraits/women/91.jpg",
+  },
+  {
+    id: 23,
+    name: "Manish Sharma",
+    role: "Seeker",
+    rating: 5,
+    review: "Best experience so far. The responsiveness of the platform on both desktop and mobile layouts is brilliant.",
+    img: "https://randomuser.me/api/portraits/men/54.jpg",
+  },
+  {
+    id: 24,
+    name: "Deepika Joshi",
+    role: "Lister",
+    rating: 4,
+    review: "Extremely useful platform for house owners and existing flatmates alike. Finding a replacement tenant didn't feel like a chore.",
+    img: "https://randomuser.me/api/portraits/women/52.jpg",
+  },
+  {
+    id: 25,
+    name: "Abhishek Nair",
+    role: "Seeker",
+    rating: 5,
+    review: "Found an absolute gem of a place and a great group of guys to live with. 10/10 would use Roomioo again if I move cities.",
+    img: "https://randomuser.me/api/portraits/men/29.jpg",
+  }
 ];
-
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -148,7 +266,7 @@ function MarqueeRow({ direction = "left" }: { direction?: "left" | "right" }) {
           x: direction === "left" ? ["0%", "-33.33%"] : ["-33.33%", "0%"],
         }}
         transition={{
-          duration: 40,
+          duration: 70,
           ease: "linear",
           repeat: Infinity,
         }}
