@@ -1,8 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏠 Roomio — Frontend
 
-## Getting Started
+> **Find Your Perfect Roommate Based on Lifestyle**
 
-First, run the development server:
+Roomio is a smart roommate-finder platform built for students and working professionals across India. It helps users discover compatible flatmates based on habits, lifestyle, and daily routines — with zero brokerage and direct in-app communication.
+
+🔗 **Live at:** [roomio.living](https://www.roomio.living)
+
+---
+
+## ✨ Features
+
+- **Smart Lifestyle Matching** — Match with housemates based on habits, cleanliness, sleep schedule, food preferences, and more
+- **Browse & Filter Listings** — Explore rooms and flats with advanced filters (location, budget, lifestyle preferences)
+- **List Your Space** — Easily post a room or flat with photos, facilities, and preferred tenant profile
+- **In-App Real-Time Chat** — Communicate directly with seekers or listers via Socket.IO-powered messaging
+- **Verified Profiles** — User verification for a safer, spam-free experience
+- **Smooth Animations** — Fluid UI transitions powered by Framer Motion
+- **Toast Notifications** — Instant feedback via Sonner
+- **Vercel Analytics** — Built-in performance and traffic insights
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| **Next.js 16** | React framework (App Router) |
+| **React 19** | UI library |
+| **TypeScript** | Type-safe development |
+| **Tailwind CSS v4** | Utility-first styling |
+| **Redux Toolkit + React-Redux** | Global state management |
+| **Axios** | HTTP client for API calls |
+| **Socket.IO Client** | Real-time chat & notifications |
+| **Framer Motion** | Animations & transitions |
+| **Lucide React** | Icon library |
+| **Sonner** | Toast notifications |
+| **date-fns / Day.js** | Date formatting utilities |
+| **@formspree/react** | Contact form handling |
+| **Vercel Analytics** | Usage analytics |
+
+---
+
+## 📁 Project Structure
+
+```
+Roomio-Frontend/
+├── public/            # Static assets
+├── src/               # Application source code
+├── next.config.ts     # Next.js configuration
+├── tsconfig.json      # TypeScript configuration
+├── eslint.config.mjs  # ESLint configuration
+├── postcss.config.mjs # PostCSS / Tailwind configuration
+└── package.json       # Dependencies & scripts
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm / yarn / pnpm / bun
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/Pritammandal77/Roomio-Frontend.git
+cd Roomio-Frontend
+
+# Install dependencies
+npm install
+```
+
+### Development Server
 
 ```bash
 npm run dev
@@ -14,23 +86,69 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+### Lint
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🌐 Environment Variables
 
-## Deploy on Vercel
+Create a `.env.local` file in the root directory and configure your backend API URL and any other required keys:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```env
+NEXT_PUBLIC_API_URL=<your_backend_api_url>
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> ⚠️ Never commit `.env.local` to version control.
+
+---
+
+## 📦 Available Scripts
+
+| Script | Description |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+
+---
+
+## 🔗 Related
+
+- **Backend Repository:** *(link to Roomio backend repo if available)*
+- **Live App:** [https://www.roomio.living](https://www.roomio.living)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+1. Fork the repository
+2. Create a new branch: `git checkout -b feature/your-feature-name`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/your-feature-name`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is private. All rights reserved © 2026 Roomio.
+
+---
+
+<p align="center">Made with ❤️ by <a href="https://github.com/Pritammandal77">Pritam Mandal</a></p>
