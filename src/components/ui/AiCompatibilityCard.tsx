@@ -16,7 +16,7 @@ export default function AiCompatibilityCard({ loading, reviewData }: AiCompatibi
   return (
     <div className="bg-linear-to-br from-indigo-50 via-white to-purple-50 p-6 rounded-2xl border border-indigo-100 shadow-xs">
       <div className="flex items-center gap-2 mb-4">
-        <div className="p-1.5 bg-indigo-600 text-white rounded-lg">
+        <div className="p-1.5 bg-green-600 text-white rounded-lg">
           <Sparkles size={16} />
         </div>
         <h2 className="font-bold text-md text-gray-800">Roomio AI Match Review</h2>
