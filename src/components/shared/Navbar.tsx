@@ -1,6 +1,6 @@
 "use client";
 
-import { setUser } from "@/lib/rtk/features/userSlice";
+import { setUser, setUserPreference } from "@/lib/rtk/features/userSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/rtk/hooks";
 import { getCurrentUser } from "@/services/auth.api";
 import { User } from "@/types/user";
@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import ProfileDropdown from "../ui/ProfileDropdown";
 import Image from "next/image";
 import ConfirmLogOutModal from "../ui/ConfirmLogOutModal";
+import { getPreference } from "@/services/preference.api";
+import { toast } from "sonner";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +34,18 @@ export default function Navbar() {
     };
 
     fetchLoggedInUser();
+  }, []);
+
+  useEffect(() => {
+    const fetchPreference = async () => {
+      try {
+        const res = await getPreference();
+        dispatch(setUserPreference(res.data));
+      } catch {
+        toast.error("Failed to load preferences");
+      }
+    };
+    fetchPreference();
   }, []);
 
   return (

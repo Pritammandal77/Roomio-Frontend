@@ -36,22 +36,20 @@ export default function Page() {
   const [userPreference, setUserPreference] = useState<PreferenceData | null>(
     null,
   );
+
+  const userPreferenceData = useAppSelector(
+    (state: any) => state.user.userPreference,
+  );
+
   const [isPreferenceAdded, setIsPreferenceAdded] = useState(false);
   const user = useAppSelector((state: any) => state.user.userData);
-
+  
   useEffect(() => {
-    const fetchPreference = async () => {
-      try {
-        const res = await getPreference();
-        setUserPreference(res.data);
-        if (res.data) setIsPreferenceAdded(true);
-      } catch {
-        toast.error("Failed to load preferences");
-      }
-    };
-    fetchPreference();
-  }, []);
- 
+    if (userPreferenceData) {
+      setUserPreference(userPreferenceData);
+    }
+  }, [userPreferenceData]);
+
   if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#f6fdf6]">
@@ -221,17 +219,15 @@ export default function Page() {
                     value={user.email}
                   />
                 )}
-                {
-                  user.mobileNumber &&
+                {user.mobileNumber && (
                   <InfoRow
-                  icon={<Phone size={13} />}
-                  label="Mobile"
-                  value={user.mobileNumber}
-                />
-                }
+                    icon={<Phone size={13} />}
+                    label="Mobile"
+                    value={user.mobileNumber}
+                  />
+                )}
               </InfoCard>
             </motion.div>
-
 
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -534,7 +530,7 @@ function InfoRow({
         <span className="text-green-500 shrink-0">{icon}</span>
         <span>{label}</span>
       </div>
-      
+
       {/* Value section: Fully visible, responsive wrapping */}
       <span className="text-xs font-bold text-gray-700 text-right break-all sm:break-word max-w-[60%]">
         {value}
@@ -607,17 +603,6 @@ function HabitChip({
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
 
 // old working , profile page code
 

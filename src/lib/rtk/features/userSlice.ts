@@ -37,17 +37,20 @@
 
 // new code for protected route
 
+import { PreferenceData } from "@/types/preference";
 import { User } from "@/types/user";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface UserState {
     userData: User | null;
+    userPreference: PreferenceData | null;
     isLoggedIn: boolean;
     loading: boolean; // Tracking initial auth check
 }
 
 const initialState: UserState = {
     userData: null,
+    userPreference: null,
     isLoggedIn: false,
     loading: true, // Start as TRUE to prevent accidental redirects
 };
@@ -61,6 +64,9 @@ const userSlice = createSlice({
             state.isLoggedIn = true;
             state.loading = false; // Check complete, user found
         },
+        setUserPreference: (state, action: PayloadAction<PreferenceData>) => {
+            state.userPreference = action.payload
+        },
         setLoading: (state, action: PayloadAction<boolean>) => {
             state.loading = action.payload; // Manual control for loading
         },
@@ -69,11 +75,11 @@ const userSlice = createSlice({
             state.isLoggedIn = false;
             state.loading = false;
         },
-         removeUserData: (state, action: PayloadAction<void>) => {
+        removeUserData: (state, action: PayloadAction<void>) => {
             state.userData = null;
         },
     },
 });
 
-export const { setUser, logout, setLoading, removeUserData } = userSlice.actions;
+export const { setUser, logout, setLoading, removeUserData, setUserPreference } = userSlice.actions;
 export default userSlice.reducer;

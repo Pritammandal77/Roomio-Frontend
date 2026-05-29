@@ -29,12 +29,19 @@ import AddInterestModal from "@/components/ui/AddInterestModal";
 import Link from "next/link";
 import ListingDetailsSkeleton from "@/components/loaders/ListingDetailsSkeleton";
 import { useAppSelector } from "@/lib/rtk/hooks";
+import { PreferenceData } from "@/types/preference";
 
 function Page() {
   const { id } = useParams();
   const [propertyData, setPropertyData] = useState<any>(null);
 
   const user = useAppSelector((state: any) => state.user.userData);
+  const userPreference = useAppSelector((state: any) => state.user.userPreference)
+
+  if(userPreference){
+    console.log("preference at listing details page", userPreference)
+    console.log("property data at listing details page", propertyData)
+  }
 
   // for interest modal
   const [showModal, setShowModal] = useState(false);
