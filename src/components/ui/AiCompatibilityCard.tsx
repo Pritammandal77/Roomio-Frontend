@@ -34,7 +34,7 @@ export default function AiCompatibilityCard({ loading, reviewData }: AiCompatibi
             <AlertCircle className="text-amber-600 shrink-0 mt-0.5" size={18} />
             <div>
               <p className="font-medium">{reviewData.message}</p>
-              <Link href="/profile/preferences" className="text-indigo-600 hover:underline font-semibold block mt-1.5">
+              <Link href="/preferences" className="text-indigo-600 hover:underline font-semibold block mt-1.5">
                 Setup room preferences →
               </Link>
             </div>
