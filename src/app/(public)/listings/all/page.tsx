@@ -56,7 +56,6 @@ function Page() {
     try {
       const res = await fetchAllListings();
       setAllListingsData(res.data || []);
-      console.log(res)
     } catch (error) {
       toast.error("Something went wrong");
     } finally {

@@ -74,7 +74,6 @@ function Page() {
         setAiLoading(true);
         const data = await getAIPropertyReview(id); // Fixed missing await keyword
         setAiReview(data);
-        console.log("ai review", data)
       } catch (error) {
         console.error("AI Component Mounting Fail:", error);
       } finally {
@@ -243,7 +242,7 @@ function Page() {
               </div>
 
               {user && (
-                <div className="bg-white hidden xl:inline p-6 rounded-2xl shadow-sm">
+                <div className="bg-white hidden xl:inline  rounded-2xl shadow-sm">
                   <button
                     onClick={() => setShowModal(true)}
                     className="w-full py-3 rounded-xl bg-linear-to-r from-green-500 to-green-600 text-white font-semibold shadow-md hover:scale-[1.02] transition"
