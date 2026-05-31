@@ -116,15 +116,14 @@ export default function ListingCard({ listing, id, index, onDelete }: any) {
 
   const handleDelete = async () => {
     // Call your delete function here
-    try{
+    try {
       const res = await deleteListing(id);
-      console.log("Deleting listing:", res);
-      toast.success("Listing deleted successfully")
+      toast.success("Listing deleted successfully");
       setShowDeleteModal(false);
-      router.push("/")
+      router.push("/");
       if (onDelete) onDelete(id);
-    }catch{
-      toast.error("Something went wrong, while deleting")
+    } catch {
+      toast.error("Something went wrong, while deleting");
     }
   };
 
@@ -187,6 +186,14 @@ export default function ListingCard({ listing, id, index, onDelete }: any) {
             {amenities?.roomType}
           </div>
         </div>
+
+        {matchPercentage && (
+          <div
+            className={`absolute top-3 right-3 ${matchPercentage > 50 ? "bg-green-600" : "bg-orange-400"}  text-white text-sm px-3 py-1 rounded-full shadow`}
+          >
+            {matchPercentage}% Profile match
+          </div>
+        )}
 
         {/* CONTENT SECTION */}
         <div className="p-5">
