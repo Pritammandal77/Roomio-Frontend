@@ -3,6 +3,8 @@
 import ListingCardSkeleton from "@/components/loaders/ListingCardSkeleton";
 import FilterPanel from "@/components/ui/FilterPanel";
 import ListingCard from "@/components/ui/ListingCard";
+import { setListingsData } from "@/lib/rtk/features/listingsSlice";
+import { useAppSelector } from "@/lib/rtk/hooks";
 import {
   fetchAllListings,
   fetchListedCities,
@@ -11,6 +13,7 @@ import {
 import { FiltersType } from "@/types/rooms";
 import { FilterIcon, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 
 function Page() {
@@ -52,11 +55,18 @@ function Page() {
     workStyle: "",
   });
 
+  const { hasListingsFetched, listingsData } = useAppSelector(
+    (state) => state.listing,
+  );
+
+  const dispatch = useDispatch();
+
   const fetchListings = async () => {
     try {
       const res = await fetchAllListings();
       setAllListingsData(res.data || []);
-      console.log(res)
+      dispatch(setListingsData(res.data || []));
+      console.log(res);
     } catch (error) {
       toast.error("Something went wrong");
     } finally {
@@ -79,7 +89,15 @@ function Page() {
   };
 
   useEffect(() => {
-    fetchListings();
+    if (hasListingsFetched) {
+      setAllListingsData(listingsData || []); // use cached data
+      setLoading(false);
+      return;
+    }
+    fetchListings(); // only hits API if not cached in redux store
+  }, []);
+
+  useEffect(() => {
     fetchCities();
   }, []);
 
@@ -174,7 +192,6 @@ function Page() {
 
   return (
     <div className="min-h-screen pt-20 xl:px-15 bg-linear-to-br from-green-50 via-white to-green-100 px-3 py-10 relative">
-
       <div className="w-full flex flex-col xl:flex-row gap-6">
         {/* filters for xl screens */}
         <div className="hidden xl:block xl:w-[20%]">
@@ -254,20 +271,6 @@ function Page() {
 }
 
 export default Page;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // old working code, without filters feature
 // "use client";
