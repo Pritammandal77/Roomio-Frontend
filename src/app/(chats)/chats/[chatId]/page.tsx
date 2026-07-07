@@ -56,11 +56,10 @@ export default function ChatPage() {
         const msgs = res.data || [];
         setMessages(msgs);
 
-        // get users from chat (first message is enough)
+        // get users from chat
         const users = msgs[0]?.chat?.users || [];
 
         const other = users.find((u: ChatUser) => u._id !== user._id);
-
 
         if (other) setOtherUser(other);
       })
@@ -74,7 +73,7 @@ export default function ChatPage() {
     markMessagesAsSeen(chatId); // DB persist
   }, [loading, socket, chatId, user?._id]);
 
-  // ── Socket events ──────────────────────────────────────────────────────────
+  // Socket events
   useEffect(() => {
     if (!socket || !chatId || !user?._id) return;
 
@@ -110,12 +109,12 @@ export default function ChatPage() {
     };
   }, [socket, chatId, user?._id]);
 
-  // ── Auto scroll ────────────────────────────────────────────────────────────
+  // Auto scroll
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
-  // ── Typing handler ─────────────────────────────────────────────────────────
+  // Typing handler
   const handleTyping = useCallback(() => {
     if (!socket) return;
     socket.emit("typing", chatId);
@@ -125,7 +124,7 @@ export default function ChatPage() {
     }, 1500);
   }, [socket, chatId]);
 
-  // ── Send message ───────────────────────────────────────────────────────────
+  // Send message
   const send = async () => {
     const trimmed = input.trim();
     if (!trimmed || sending || !socket) return;

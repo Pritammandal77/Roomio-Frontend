@@ -42,7 +42,7 @@ export default function Navbar() {
         const res = await getPreference();
         dispatch(setUserPreference(res.data));
       } catch {
-        toast.error("Failed to load preferences");
+        console.log("Failed to load preferences");
       }
     };
     fetchPreference();
