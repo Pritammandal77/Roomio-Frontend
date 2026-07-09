@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <div className="hidden md:flex flex-1 items-center justify-center relative overflow-hidden bg-linear-to-br from-green-50 via-white to-emerald-50">
 
-      {/* 🌿 Soft background glow */}
+      {/* Soft background glow */}
       <div className="absolute w-100 h-100 bg-green-200/30 blur-3xl rounded-full top-10 left-10" />
       <div className="absolute w-75 h-75 bg-emerald-300/20 blur-3xl rounded-full bottom-10 right-10" />
 

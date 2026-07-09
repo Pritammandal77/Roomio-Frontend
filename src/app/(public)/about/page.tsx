@@ -384,8 +384,7 @@ export default function AboutUs() {
                 </h2>
               </div>
               <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
-                Based in Chandrapur, Maharashtra, I am a Full Stack Developer
-                completing my final-semester BSc IT.
+                Based in Chandrapur, Maharashtra. A Full Stack Engineer
               </p>
               <div className="grid grid-cols-2 gap-8 py-8 border-y border-white/10">
                 <motion.div
