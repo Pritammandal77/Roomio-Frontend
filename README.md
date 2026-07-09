@@ -11,6 +11,7 @@ Roomio is a smart roommate-finder platform built for students and working profes
 ## ✨ Features
 
 - **Smart Lifestyle Matching** — Match with housemates based on habits, cleanliness, sleep schedule, food preferences, and more
+- **AI Match Review** — Get instant AI-generated compatibility scores (e.g., "90% Vibe Match") and personalized summaries detailing exactly why your profile aligns with a specific listing
 - **Browse & Filter Listings** — Explore rooms and flats with advanced filters (location, budget, lifestyle preferences)
 - **List Your Space** — Easily post a room or flat with photos, facilities, and preferred tenant profile
 - **In-App Real-Time Chat** — Communicate directly with seekers or listers via Socket.IO-powered messaging
